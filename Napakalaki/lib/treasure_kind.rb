@@ -2,11 +2,12 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
-require_relative 'prize.rb'
-require_relative 'bad_consequence.rb'
-
-puts "Hello World"
-
-a=Prize.new(5,5)
-puts a.toString
-a = Bad_consequence.new
+module TreasureKind
+  
+    ARMOR = "ARMOR"
+    ONEHAND = "ONEHAND"
+    BOTHHANDS = "BOTHHANDS"
+    HELMET = "HELMET"
+    SHOES = "SHOES"
+    
+end

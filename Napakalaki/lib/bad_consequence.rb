@@ -2,11 +2,9 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
-require_relative 'prize.rb'
-require_relative 'bad_consequence.rb'
-
-puts "Hello World"
-
-a=Prize.new(5,5)
-puts a.toString
-a = Bad_consequence.new
+class Bad_consequence
+  attr_accessor :text ,:levels,:nVisibleTreasures,:nHiddenTreasures,:death
+  def initialize
+    @nVisibleTreasures = Array.new
+  end
+end
