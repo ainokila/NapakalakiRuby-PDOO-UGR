@@ -11,3 +11,4 @@ a=Prize.new(5,5)
 puts a.toString
 a = Bad_consequence.new("Hola",5,2,3)
 puts a.to_s
+puts a.to_s
