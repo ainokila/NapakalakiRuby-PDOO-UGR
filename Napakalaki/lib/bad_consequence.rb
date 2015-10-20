@@ -7,4 +7,5 @@ class Bad_consequence
   def initialize
     @nVisibleTreasures = Array.new
   end
+  
 end

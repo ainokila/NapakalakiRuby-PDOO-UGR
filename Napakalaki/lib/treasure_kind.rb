@@ -4,10 +4,10 @@
 
 module TreasureKind
   
-    ARMOR = "ARMOR"
-    ONEHAND = "ONEHAND"
-    BOTHHANDS = "BOTHHANDS"
-    HELMET = "HELMET"
-    SHOES = "SHOES"
+    ARMOR = :armor
+    ONEHAND = :onehand
+    BOTHHANDS = :bothhands
+    HELMET = :helmet
+    SHOES = :shoes
     
 end
