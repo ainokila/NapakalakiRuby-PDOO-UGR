@@ -10,7 +10,7 @@ class Prize
     @level=level
   end
   
-  def toString
+  def to_s
     solucion="Treasures = "+@treasure.to_s+" levels= "+@level.to_s
   end
   
