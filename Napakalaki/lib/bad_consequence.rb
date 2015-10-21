@@ -40,8 +40,13 @@ class Bad_consequence
   end
   
   def to_s
-    "Mal rollo: #{@text} \n Pierdes: #{@levels} niveles \n y pierdes #{@nVisibleTreasures} tesoros visibles \n y #{@nHiddenTreasures} tesoros ocultos
-       \n muerte: #{@death} \n Tipo de Tesoro Visible: #{@specificVisibleTreasures.to_s} \n Tipo de Tesoro Oculto: #{@specificHiddenTreasures.to_s}."
+    "Mal rollo: #{@text} 
+    \n Pierdes: #{@levels} niveles 
+    \n y pierdes #{@nVisibleTreasures} tesoros visibles 
+    \n y #{@nHiddenTreasures} tesoros ocultos
+    \n muerte: #{@death} 
+    \n Tipo de Tesoro Visible: #{@specificVisibleTreasures} 
+    \n Tipo de Tesoro Oculto: #{@specificHiddenTreasures}."
   end
   
 end

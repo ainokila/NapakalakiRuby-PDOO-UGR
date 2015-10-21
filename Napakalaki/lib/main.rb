@@ -52,7 +52,7 @@ prize5 = Prize.new(3,1)
 
 bad_consequence5 = Bad_consequence.new_level_number_of_treasures('Pierdes todos tus tesoros visibles.', 0 ,6,0)
 
-monsters << Monster.new('El gorron en el umbral', 10, bad_consequenc5, prize5)
+monsters << Monster.new('El gorron en el umbral', 10, bad_consequence5, prize5)
 
 #Monstruo 6
 
@@ -119,6 +119,54 @@ bad_consequence13 = Bad_consequence.new_level_number_of_treasures('Da mucho asqu
 
 monsters << Monster.new('Pollipolipo volante',3, bad_consequence13 , prize13)
 
+#Monstruo 14
+
+prize14 = Prize.new(3,1)
+
+bad_consequence14 = Bad_consequence.new_death('No le hace gracia que pronuncien mal su nombre. Estas muerto.')
+
+monsters << Monster.new('Yskhtihyssg-Goth',12 , bad_consequence14 , prize14)
+
+#Monstruo 15
+
+prize15 = Prize.new(4,1)
+
+bad_consequence15 = Bad_consequence.new_death('La familia te atrapa. Estas muerto.')
+
+monsters << Monster.new('Familia feliz',1 , bad_consequence15 , prize15)
+
+#Monstruo 16
+
+prize16 = Prize.new(2,1)
+
+bad_consequence16 = Bad_consequence.new_level_specific_treasures('La quinta directiva te obliga a perder 2 niveles y un tesoro de 2 manos visible.', 2, [TreasureKind::BOTHHANDS],[])
+
+monsters << Monster.new('Roboggoth',8, bad_consequence16 , prize16)
+
+#Monstruo 17
+
+prize17 = Prize.new(1,1)
+
+bad_consequence17 = Bad_consequence.new_level_specific_treasures('Te asusta en la noche. Pierdes un casco visible.', 0, [TreasureKind::HELMET],[])
+
+monsters << Monster.new('El espia',5, bad_consequence17 , prize17)
+
+#Monstruo 18
+
+prize18 = Prize.new(1,1)
+
+bad_consequence18 = Bad_consequence.new_level_number_of_treasures('Menudo susto te llevas.Pierdes 2 niveles y 5 tesoros visibles.',2 , 5, 0)
+
+monsters << Monster.new('El lenguas',20, bad_consequence18 , prize18)
+
+#Monstruo 19
+
+prize19 = Prize.new(1,1)
+
+bad_consequence19 = Bad_consequence.new_level_specific_treasures('Te faltan manos para tanta cabeza. Pierdes todos tus tesoros visibles de las manos.', 0,
+                        [TreasureKind::BOTHHANDS,TreasureKind::ONEHAND,TreasureKind::ONEHAND],[])
+
+monsters << Monster.new('Bicefalo',20, bad_consequence19 , prize19) 
 
  
 puts monsters
