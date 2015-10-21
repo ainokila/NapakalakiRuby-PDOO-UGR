@@ -2,6 +2,10 @@
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
 
+#encoding: utf-8
+require_relative 'prize.rb'
+require_relative 'bad_consequence.rb'
+
 class Monster
   attr_accessor :name, :combat_level , :bad_consequence , :price 
   
@@ -13,6 +17,10 @@ class Monster
     @price = price
     
   end
+ 
+   def to_s
+    "\n Nombre del Monstruo: #{@name}\n Nivel de combate: #{@combat_level.to_s}\n #{@bad_consequence.to_s}\n #{@price.to_s}"
+  end
   
  
-  end
+ end
