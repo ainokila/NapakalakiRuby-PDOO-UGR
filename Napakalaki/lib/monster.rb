@@ -4,14 +4,15 @@
 
 class Monster
   attr_accessor :name, :combat_level , :bad_consequence , :price 
-  def self.constructor1 (name, combat_level, bad_consequence, price)
-    monstruo = Monster.new
-    monstruo.name = name
-    monstruo.combat_level = combat_level
-    monstruo.bad_consequence = bad_consequence
-    monstruo.price = price
-    monstruo
+  
+   def initialize(name, combat_level, bad_consequence, price)
+    
+    @name = name
+    @combat_level= combat_level
+    @bad_consequence = bad_consequence
+    @price = price
     
   end
   
+ 
   end

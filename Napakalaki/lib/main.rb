@@ -9,5 +9,5 @@ puts "Hello World"
 
 a=Prize.new(5,5)
 puts a.to_s
-a = Bad_consequence.constructor1("Hola",5,2,3)
+a = Bad_consequence.new_muerte("Hola",true)
 puts a.to_s
