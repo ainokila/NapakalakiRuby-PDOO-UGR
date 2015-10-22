@@ -167,7 +167,24 @@ bad_consequence19 = Bad_consequence.new_level_specific_treasures('Te faltan mano
                         [TreasureKind::BOTHHANDS,TreasureKind::ONEHAND,TreasureKind::ONEHAND],[])
 
 monsters << Monster.new('Bicefalo',20, bad_consequence19 , prize19) 
-
- 
 puts monsters
+
+#Mostrar todos los monstruos que tengan un mal rollo que implique sólo pérdida de niveles.
+puts "\n\n\nMonstruos que tengan un mal rollo que implique perdida de niveles : "
+
+monsters.each do |monstruo|
+  if monstruo.bad_consequence.levels > 0 and monstruo.bad_consequence.nVisibleTreasures == 0 and monstruo.bad_consequence.nHiddenTreasures == 0
+     puts monstruo
+   end
+end
+
+#Mostrar todos los monstruos que tengan un buen rollo que indique una ganancia de niveles superior a 1.
+
+puts "\n\n\nMonstruos que tengan un buen rollo que indique una ganancia de niveles superior a 1: "
+
+monsters.each do |monstruo|
+  if monstruo.price.level > 1 
+     puts monstruo
+   end
+end
 
