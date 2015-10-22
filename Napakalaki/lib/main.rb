@@ -169,8 +169,18 @@ bad_consequence19 = Bad_consequence.new_level_specific_treasures('Te faltan mano
 monsters << Monster.new('Bicefalo',20, bad_consequence19 , prize19) 
 #puts monsters
 
+#Mostrar todos los monstruos que tengan un nivel de combate superior a 10
+
+puts "\n\n\nMostrar todos los monstruos que tengan un nivel de combate superior a 10"
+
+monsters.each do |monstruo|
+  if monstruo.combat_level > 10
+     puts monstruo
+   end
+end
+
 #Mostrar todos los monstruos que tengan un mal rollo que implique sólo pérdida de niveles.
-puts "\n\n\nMonstruos que tengan un mal rollo que implique perdida de niveles : "
+puts "\n\n\nMonstruos que tengan un mal rollo que implique solo perdida de niveles : "
 
 monsters.each do |monstruo|
   if monstruo.bad_consequence.levels > 0 and monstruo.bad_consequence.nVisibleTreasures == 0 and monstruo.bad_consequence.nHiddenTreasures == 0 and monstruo.bad_consequence.specificVisibleTreasures == Array.new and monstruo.bad_consequence.specificHiddenTreasures == Array.new 
@@ -188,3 +198,14 @@ monsters.each do |monstruo|
    end
 end
 
+#Mostrar todos los monstruos que tengan un mal rollo que suponga la pérdida de un determinado tipo de tesoros ya sea visibles y/o ocultos.
+# Debe mostrarse el nombre, nivel de combate, buen rollo y mal rollo de cada monstruo.
+
+puts "\n\n\nMostrar todos los monstruos que tengan un mal rollo que suponga la perdida de un determinado tipo de tesoros ya sea visibles y/o ocultos.Por ejemplo, de tipo Onehand"
+
+
+monsters.each do |monstruo|
+  if monstruo.bad_consequence.specificVisibleTreasures == [TreasureKind::BOTHHANDS,TreasureKind::ONEHAND,TreasureKind::ONEHAND] or monstruo.bad_consequence.specificHiddenTreasures == [TreasureKind::ONEHAND]
+     puts monstruo
+   end
+end
