@@ -205,7 +205,23 @@ puts "\n\n\nMostrar todos los monstruos que tengan un mal rollo que suponga la p
 
 
 monsters.each do |monstruo|
-  if monstruo.bad_consequence.specificVisibleTreasures == [TreasureKind::BOTHHANDS,TreasureKind::ONEHAND,TreasureKind::ONEHAND] or monstruo.bad_consequence.specificHiddenTreasures == [TreasureKind::ONEHAND]
-     puts monstruo
+  specificVisible = monstruo.bad_consequence.specificVisibleTreasures
+  specificHidden = monstruo.bad_consequence.specificHiddenTreasures
+  esta = false
+  
+  specificVisible.each do |spec|
+    if spec == :onehand
+     esta = true
+    end
+  end
+  
+   specificHidden.each do |otra|
+    if otra == :onehand
+     esta = true
+    end
    end
+   
+  if esta
+    puts monstruo
+  end
 end
