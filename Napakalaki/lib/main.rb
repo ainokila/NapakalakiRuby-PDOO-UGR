@@ -215,8 +215,8 @@ monsters.each do |monstruo|
     end
   end
   
-   specificHidden.each do |otra|
-    if otra == :onehand
+   specificHidden.each do |hidd|
+    if hidd == :onehand
      esta = true
     end
    end
