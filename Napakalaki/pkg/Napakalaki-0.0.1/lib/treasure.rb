@@ -3,7 +3,13 @@
 # and open the template in the editor.
 
 class Treasure
-  def initialize
-    
+  
+  attr_accesor :name, :bonus ,:type
+  
+  def initialize(nombre,bon,kind)
+    @name=nombre
+    @bonus=bon
+    @type=kind
   end
+ 
 end
