@@ -65,9 +65,9 @@ class Player
        
      combat_level=0;
         
-     combatLevel = get_level_treasures 
+     combat_level = get_level_treasures 
      
-        combatLevel = combatLevel + @level;
+        combat_level = combat_level + @level;
      
     combat_level
    
