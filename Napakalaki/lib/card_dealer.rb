@@ -55,7 +55,7 @@ class CardDealer
       @unused_treasures << Treasure.new("Necrotelecom", 2, HELMET)
       @unused_treasures << Treasure.new("Porra preternatural", 2,  ONEHAND)
       @unused_treasures << Treasure.new("Tentácula de pega", 0,  HELMET)
-      @unused_treasures << Treasure.new("Zapato deja-amigos",  0,  SHOE)
+      @unused_treasures << Treasure.new("Zapato deja-amigos",  0,  SHOES)
       @unused_treasures << Treasure.new("Shogulador", 1, BOTHHAND)
       @unused_treasures << Treasure.new("Varita de atizamiento", 3,ONEHAND)
     
