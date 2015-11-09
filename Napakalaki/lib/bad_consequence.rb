@@ -49,4 +49,17 @@ class Bad_consequence
     \n Tipo de Tesoro Oculto: #{@specificHiddenTreasures}."
   end
   
-end
+  
+  def is_empty
+     
+    @solucion 
+         if @text == " " and @levels == 0 and @nVisibleTreasures == 0 and  @nHiddenTreasures == 0 and @death ==false
+                    
+              solucion = true
+         end
+               
+    solucion;
+
+         end
+      
+  end
