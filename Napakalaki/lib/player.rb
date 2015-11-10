@@ -8,7 +8,7 @@ require_relative 'bad_consequence'
 class Player
   attr_accessor :name, :level, :dead, :can_i_steal, :hidden_treasures, :visible_treasures, :enemy, :pending_bad_consequence
   
-  CONST_MAXLEVEL = 10
+  @@CONST_MAXLEVEL = 10
   
   
    def initialize(name)
@@ -43,13 +43,13 @@ class Player
     
     hidden_treasures.each do |hidd|
       
-      solucion = solucion + hidd.binus
+      solucion = solucion + hidd.bonus
       
     end
     
     visible_treasures.each do |vis|
       
-      solucion = solucion + vis.binus
+      solucion = solucion + vis.bonus
       
     end
        
