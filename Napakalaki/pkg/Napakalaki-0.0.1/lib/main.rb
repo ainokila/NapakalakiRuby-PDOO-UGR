@@ -8,7 +8,10 @@ require_relative 'prize.rb'
 require_relative 'bad_consequence.rb'
 require_relative 'monster.rb'
 require_relative 'treasure_kind.rb'
+require_relative 'dice.rb'
 
+aleatorio = Dice.instance
+puts Dice.instance.next_number
 
 monsters = Array.new
 

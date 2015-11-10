@@ -10,7 +10,7 @@ class Dice
     
   end
   
-  def get_instance()
+  def self.get_instance
     Dice.instance
   end
   

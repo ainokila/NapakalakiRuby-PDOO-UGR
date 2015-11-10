@@ -78,15 +78,14 @@ class Player
    
    def increment_levels(i)
      
-     if( @level + i >= MAXLEVEL )
-        @level = MAXLEVEL
+     if( @level + i >= CONST_MAXLEVEL )
+        @level = CONST_MAXLEVEL
      
      else
       
        @level = @level + i
        
      end
-   
    end
    
    private :increment_levels
