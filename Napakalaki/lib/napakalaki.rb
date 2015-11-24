@@ -98,41 +98,81 @@ class Napakalaki
       combat_result = @current_player.combat(m);
     
     @dealer.give_monster_back(m);
-    
+      
     return combat_result;  
     
   end
 
   def discard_visible_treasures(treasures)
     
+      treasures.each do |treasure|
+          @current_player.discard_visible_treasure(treasure)
+          @dealer.give_treasure_back(treasure)
+      
+    
+  
+    end
   end
   
+  
   def discard_hidden_treasures(treasures)
+      
+      treasures.each do |treasure|
+          
+          @current_player.discard_hidden_treasure(treasure)
+          @dealer.give_treasure_back(treasure)
+      
     
+  
+    end
   end
-
+  
   def make_treasures_visible(treasures)
+     
+    treasures.each do |t|
+          @currentPlayer.make_treasure_visible(t)
+    end
     
   end
-
+      
   def init_game(player)
     
-  end
-
-  def get_current_player
-    
-  end
-
-  def get_current_monster
+    init_players(player);
+    set_enemies
+    @dealer.init_cards
+    next_turn 
     
   end
 
   def next_turn
-    
+     
+    state_ok = false
+    state_ok = next_turn_allowed 
+   
+   if state_ok == true
+       
+       @current_monster = dealer.next_monster
+       @current_player = next_player
+       
+       dead = @current_player.is_death
+       
+       if dead == true
+           @currentPlayer.init_treasures
+       end
+       
+   end
+     state_ok;
   end
 
   def end_of_game(result)
     
+    resultado=false
+    
+    if result.to_s == "WINGAME"
+            resultado = true
+    end
+    
+    resultado    
   end
 
 end
