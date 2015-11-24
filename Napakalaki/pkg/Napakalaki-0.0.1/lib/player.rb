@@ -271,8 +271,11 @@ class Player
  ##      
  ##      return solucion;
  ## }
- ## AQUI EMPIEZO YO
- ##
+ #
+ #
+ #
+ # AQUI EMPIEZO YO
+ #
   
   def discard_visible_treasure(t)
       
@@ -315,63 +318,64 @@ class Player
   end
   
       
-  public void initTreasures(){
-      CardDealer dealer = CardDealer.getInstance();
-      Dice dice = Dice.getInstance();
+  def init_treasures
+    
+      dealer = CardDealer.get_instance
+      dice = Dice.get_instance
       
-      this.bringToLife();
+      self.bring_to_life
       
-      Treasure treasure = dealer.nextTreasure();
-      hiddenTreasures.add(treasure);
+      treasure = dealer.next_treasure
+      @hidden_treasures << treasure
       
-      int number = dice.nextNumber();
+      number = dice.next_number
       
-      if(number>1){
-          treasure = dealer.nextTreasure();
-          hiddenTreasures.add(treasure);
-      }
+      if number > 1
+          treasure = dealer.next_treasure
+          @hidden_treasures << treasure
+      end
       
-      if(number == 6){
-          treasure = dealer.nextTreasure();
-          hiddenTreasures.add(treasure);
+      if number == 6
+          treasure = dealer.next_treasure();
+          @hidden_treasures << treasure
           
-      }
-  }
+      end
+  end
   
-  public CombatResult combat(Monster m){
-      CombatResult combatResult;
-      int myLevel = getCombatLevel();
-      int monsterLevel = m.getCombatLevel();
+  def combat(m)
+    
+      combat_result
+      my_level = get_combat_level
+      monster_level = m.get_combatlevel
       
-      if(myLevel > monsterLevel){
-          applyPrize(m);
+      if my_level > monster_level 
           
-          if(level >=MAXLEVEL){
-                combatResult = CombatResult.WINGAME;
-          }
-          else{
-               combatResult = CombatResult.WIN;
-          }
+        apply_prize(m)
           
-      }
-      else{
-          applyBadConsequence(m);
+          if @level >= @@MAXLEVEL
+                combat_result = CombatResult.WINGAME
           
-          combatResult = CombatResult.LOSE;
-      }
+          else
+               combat_result = CombatResult.WIN;
+          end
+         
+      else
+          apply_bad_consequence(m)
+          
+          combat_result = CombatResult.LOSE;
+      end
       
-      return combatResult;
+      combat_result
+  end
+ 
+  def make_treasure_visible(t)
       
-  }
-  
-  public void makeTreasureVisible(Treasure t){
+      can_i = can_make_treasure_visible(t)
       
-      boolean canI = canMakeTreasureVisible(t);
-      
-      if(canI){
-          visibleTreasures.add(t);
-          hiddenTreasures.remove(t);
-      }
-  }
-}
+      if can_i
+          @visible_treasures << t
+          hidden_treasures.delete(t);
+      end
+  end
+
 end
