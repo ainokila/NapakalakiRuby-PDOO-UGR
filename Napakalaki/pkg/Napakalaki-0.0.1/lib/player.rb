@@ -191,91 +191,106 @@ class Player
   end
   
   private :can_you_give_me_a_treasure
-  ##
- ## private boolean canMakeTreasureVisible(Treasure t){
-  ##    
-  ##    boolean solucion=true;
-  ##    
-  ##    for(Treasure iterador  : visibleTreasures){
-  ##        int contadorOneHand = 0;
-  ##        
- ##         if(iterador.getType() == TreasureKind.ONEHAND){
-  ##            contadorOneHand++;
-  ##        }
-  ##        if(!(contadorOneHand<2 || t.getType()==TreasureKind.ONEHAND)){
-   ##           
-   ##             if(iterador.getType() == t.getType()){
-    ##            solucion = false;
-    ##            }
-     ##           if(iterador.getType()==TreasureKind.BOTHHANDS && t.getType() == TreasureKind.ONEHAND  ){
-     ##               solucion = false;
-    ##            }
-     ##           if(iterador.getType()==TreasureKind.ONEHAND && t.getType() == TreasureKind.BOTHHANDS ){
-     ##               solucion = false;
-      ##          }
-      ##    }
-     ##     
-    ##      
-   ##   }
-    ##  
-  ##    return solucion;
- ##}
- ## 
- ## private void applyPrize(Monster m){
-  ######    this.incrementLevels(m.getLevelsGained());
-  ##    int tesoros = m.getTreasuresGained();
-    ##  
-    ##  CardDealer baraja = CardDealer.getInstance();
-    ##  
-    ##  for(int i = 0 ; i<tesoros ; i++){
-    ##      hiddenTreasures.add(baraja.nextTreasure());
-    ##  }
-  ##}
-  ##
- ## private void applyBadConsequence(Monster m){
-   ##   
-   ##   BadConsequence bad = m.getBadConsequence();
-   ##   
-   ##   int niveles = bad.getLevels();
-   ##   
-   ##   this.decrementLevels(niveles);
-   ## 
-   ##   BadConsequence pendingBad = pendingBadConsequence; // Si no le daba un valor inicial e igualaba directamente, daba error.
-   ##   
-   ##   pendingBad.adjustToFitTreasureLists(visibleTreasures,hiddenTreasures);
-   ##   
-   ##   this.setPendingBadConsequence(pendingBad);
-   ##   
-  ##}
-  ##
-  ## public Treasure stealTreasure(){
-    ##  boolean canI = this.canISteal();
-     ## Treasure treasure = null;
-     ## 
-     ## if(canI){
-       ##   boolean canYou = enemy.canYouGiveMeATreasure();
-       ##   if(canYou){
-       ##       treasure=enemy.giveMeATreasure();
-       ##       this.hiddenTreasures.add(treasure);
-       ##       this.haveStolen();
-       ##   }
-      ##}
-      ## return treasure;
-  ## }
-  ##
- ## private Treasure giveMeATreasure(){
- ##      
- ##      Treasure solucion;
- ##      int posAleatorio = (int) Math.random()*hiddenTreasures.size();
- ##      solucion = hiddenTreasures.get(posAleatorio);
- ##      
- ##      return solucion;
- ## }
- #
- #
- #
- # AQUI EMPIEZO YO
- #
+ 
+    def can_make_treasure_visible(t)
+   
+       solucion=true
+       
+         @visible_treasures.each do |iterador|
+          
+            contador_one_hand = 0
+          
+            if iterador.get_type == :onehand
+          
+                contador_one_hand = contador_one_hand + 1
+             
+            end
+            
+            if !(contador_one_hand <2) or t.get_type == :onehand
+              
+                if iterador.get_type == t.get_type
+                      solucion= false
+                      
+                end
+                
+                if iterador.get_type == :bothhands and t.get_type  == :onehand  
+                       solucion = false
+                end
+                
+                if iterador.get_type == :onehand and t.get_type == :bothhands
+                       solucion = false
+                end
+                
+            end
+             
+         end
+   solucion
+end
+ 
+ private :can_make_treasure_visible
+ 
+    
+  def apply_prize(m)
+ 
+    self.increment_levels(m.get_levels_gained)
+    tesoros = m.get_treasures_gained
+    
+    baraja = card_dealer.get_instance
+        
+        tesoros.each do |i|
+          @hidden_treasures << baraja.next_treasure
+          
+        end
+   end
+   
+  private :apply_prize
+  
+    def applyBadConsequence(m)
+      
+      bad = m.get_bad_consequence
+      niveles = bad.get_levels
+      self.decrement_levels(niveles)
+      
+      pending_bad = @pending_bad_consequence
+      
+      pending_bad.adjust_to_fit_treasure_list(@visible_treasures,@hidden_treasures)
+      
+      @pending_bad_consequence = pending_bad
+      
+    end
+
+  private :apply_bad_consequence
+  
+  def steal_treasure
+    can_i = self.can_i_steal
+    treasure = nil
+    
+    if(can_i)
+      can_you = @enemy.can_you_give_me_a_treasure
+      
+      if(can_you)
+        treasure = enemy.give_me_a_treasure
+        @hidden_treasures << treasure
+       #duda#
+       self.have_stolen
+        
+      end
+    end
+    treasure
+  end
+  
+  def  give_me_a_treasure
+    
+    maximo = @hidden_treasures.length
+    
+    pos_aleatorio = Random.rand(1...maximo)
+    
+    solucion = hidden_treasures.at(pos_aleatorio)
+    
+   solucion   
+  end
+
+ private :give_me_a_treasure
   
   def discard_visible_treasure(t)
       
@@ -308,11 +323,11 @@ class Player
   
   def discard_all_treasures
     
-     visible_treasures.each do |treasure|
+     @visible_treasures.each do |treasure|
           self.discard_visible_treasure(t)
      end
       
-      hidden_treasures.each do |treasure|
+      @hidden_treasures.each do |treasure|
           self.discard_hidden_treasure(t)
      end
   end
