@@ -273,9 +273,10 @@ class Player
  ## }
  ## AQUI EMPIEZO YO
  ##
+  
   def discard_visible_treasure(t)
       
-      @visible_treasures.remove(t)
+      @visible_treasures.delete(t)
       
       if @pending_bad_consequence != nil  and !@pending_bad_consequence.is_empty
            
@@ -288,26 +289,32 @@ class Player
       
   
   
-  public void discardHiddenTreasure(Treasure t){
+  def discard_hidden_treasure(t)
       
-      hiddenTreasures.remove(t);
+     @hidden_treasures.delete(t)
       
-      if((pendingBadConsequence != null) && (!pendingBadConsequence.isEmpty())){
-            pendingBadConsequence.substractHiddenTreasure(t);
-      }
-       
-      dieIfNoTreasures();
-  }
+      if @pending_bad_consequence != nil  and !@pending_bad_consequence.is_empty
+           
+          @pending_bad_consequence.substract_hidden_treasure(t)
+      
+      die_if_no_treasures 
+      
+    end
+  end
+      
   
-  public void discardAllTreasures(){
-      for(Treasure treasure : visibleTreasures){
-          this.discardVisibleTreasure(treasure);
-      }
-      for(Treasure treasure : hiddenTreasures){
-          this.discardHiddenTreasure(treasure);
-      }
-  }
+  def discard_all_treasures
+    
+     visible_treasures.each do |treasure|
+          self.discard_visible_treasure(t)
+     end
+      
+      hidden_treasures.each do |treasure|
+          self.discard_hidden_treasure(t)
+     end
+  end
   
+      
   public void initTreasures(){
       CardDealer dealer = CardDealer.getInstance();
       Dice dice = Dice.getInstance();

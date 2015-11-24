@@ -49,4 +49,31 @@ class Bad_consequence
     \n Tipo de Tesoro Oculto: #{@specificHiddenTreasures}."
   end
   
-end
+  
+  def is_empty
+     
+    @solucion 
+         if @text == " " and @levels == 0 and @nVisibleTreasures == 0 and  @nHiddenTreasures == 0 and @death ==false and @specificVisibleTreasures.empty? and @specificHiddenTreasures.empty?
+                    
+              solucion = true
+         end
+               
+    solucion;
+
+  end
+  
+  def substractVisibleTreasure(t)
+    @specificVisibleTreasures.delete(t.type)
+  end
+  
+  def substractHiddenTreasure(t)
+    @specificHiddeTreasures.delete(t.type)
+  end
+  
+  def adjustToFitTreasureLists(v, h)
+    a   
+  end
+  
+    
+      
+  end
