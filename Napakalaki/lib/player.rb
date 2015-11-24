@@ -320,15 +320,15 @@ class Player
       
   def init_treasures
     
-      dealer = CardDealer.get_instance
-      dice = Dice.get_instance
+      dealer = card_dealer.get_instance
+      d = dice.get_instance
       
       self.bring_to_life
       
       treasure = dealer.next_treasure
       @hidden_treasures << treasure
       
-      number = dice.next_number
+      number = d.next_number
       
       if number > 1
           treasure = dealer.next_treasure
@@ -344,28 +344,29 @@ class Player
   
   def combat(m)
     
-      combat_result
+      
       my_level = get_combat_level
       monster_level = m.get_combatlevel
-      
+     
+        
       if my_level > monster_level 
-          
+              
         apply_prize(m)
           
           if @level >= @@MAXLEVEL
-                combat_result = CombatResult.WINGAME
+                combate = combat_result.WINGAME
           
           else
-               combat_result = CombatResult.WIN;
+               combate = combat_result.WIN;
           end
          
       else
           apply_bad_consequence(m)
           
-          combat_result = CombatResult.LOSE;
+          combate = combat_result.LOSE;
       end
       
-      combat_result
+      combate
   end
  
   def make_treasure_visible(t)
