@@ -71,8 +71,7 @@ class Bad_consequence
   end
   
   def adjustToFitTreasureLists(v, h)
-    
-    
+    a   
   end
   
     

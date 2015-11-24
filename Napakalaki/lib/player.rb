@@ -12,8 +12,8 @@ class Player
   
   
    def initialize(name)
-      
-      @name = name
+     
+      @name = name 
       @dead = true
       #Inicializamos el nivel a 1
       @level = 1 
