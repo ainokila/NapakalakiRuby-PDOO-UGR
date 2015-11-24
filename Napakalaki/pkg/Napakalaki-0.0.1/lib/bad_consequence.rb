@@ -62,15 +62,15 @@ class Bad_consequence
 
   end
   
-  def substractVisibleTreasure(t)
+  def substract_visible_treasure(t)
     @specificVisibleTreasures.delete(t.type)
   end
   
-  def substractHiddenTreasure(t)
+  def substract_hidden_treasure(t)
     @specificHiddeTreasures.delete(t.type)
   end
   
-  def adjustToFitTreasureLists(v, h)
+  def adjust_to_fit_lists(v, h)
     a   
   end
   
