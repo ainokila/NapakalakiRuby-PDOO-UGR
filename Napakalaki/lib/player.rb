@@ -285,7 +285,7 @@ end
     
     pos_aleatorio = Random.rand(1...maximo)
     
-    solucion = hidden_treasures.at(pos_aleatorio)
+    solucion = @hidden_treasures.index(pos_aleatorio)
     
    solucion   
   end

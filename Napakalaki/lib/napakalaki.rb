@@ -38,7 +38,7 @@ class Napakalaki
       if @currentPlayer.nil?
           numeroJugadores = @players.length - 1
           posicion =  Random.rand(1...numeroJugadores)
-          aux = @players.at(posicion)
+          aux = @players.index(posicion)
       
                    
     
@@ -53,9 +53,9 @@ class Napakalaki
         posicion = posicion +1
         
         if posicion >= @players.length
-                aux = @players.at(0);
+                aux = @players.index(0);
         else
-                aux = @players.at(posicion);
+                aux = @players.index(posicion);
         
                 
        end
@@ -84,12 +84,12 @@ class Napakalaki
         
        pos_aleatorio =  Random.rand(1...tamanio)
        
-       while (@players.at(pos_aleatorio) == iterador)
+       while (@players.index(pos_aleatorio) == iterador)
            
            pos_aleatorio =  Random.rand(1...tamanio)
        end
         
-       iterador.set_enemy_player(@players.at(pos_aleatorio));
+       iterador.set_enemy_player(@players.index(pos_aleatorio));
      end
   end
   

@@ -71,9 +71,31 @@ class Bad_consequence
   end
   
   def adjust_to_fit_lists(v, h)
-    a   
-  end
-  
+      #YO NO LO HARIA ASÍ 
+        visible = Array.new
+        hidden = Array.new
+        
+        v.each do |t|
+            
+            if visible.index(t.type) == nil 
+                visible << t.type
+            end
+        end
+        
+        
+        h.each do |t|
+            
+            if hidden.index(t.type) == nil 
+                hidden << t.type
+            end
+        end  
+        
+        bad_cons = bad_consequence.new_level_specific_treasures(@text, 0, visible, hidden)
+
+        bad_cons
+        
+    end
     
-      
   end
+       
+ 
