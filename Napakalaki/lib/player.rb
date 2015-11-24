@@ -191,97 +191,102 @@ class Player
   end
   
   private :can_you_give_me_a_treasure
+  ##
+ ## private boolean canMakeTreasureVisible(Treasure t){
+  ##    
+  ##    boolean solucion=true;
+  ##    
+  ##    for(Treasure iterador  : visibleTreasures){
+  ##        int contadorOneHand = 0;
+  ##        
+ ##         if(iterador.getType() == TreasureKind.ONEHAND){
+  ##            contadorOneHand++;
+  ##        }
+  ##        if(!(contadorOneHand<2 || t.getType()==TreasureKind.ONEHAND)){
+   ##           
+   ##             if(iterador.getType() == t.getType()){
+    ##            solucion = false;
+    ##            }
+     ##           if(iterador.getType()==TreasureKind.BOTHHANDS && t.getType() == TreasureKind.ONEHAND  ){
+     ##               solucion = false;
+    ##            }
+     ##           if(iterador.getType()==TreasureKind.ONEHAND && t.getType() == TreasureKind.BOTHHANDS ){
+     ##               solucion = false;
+      ##          }
+      ##    }
+     ##     
+    ##      
+   ##   }
+    ##  
+  ##    return solucion;
+ ##}
+ ## 
+ ## private void applyPrize(Monster m){
+  ######    this.incrementLevels(m.getLevelsGained());
+  ##    int tesoros = m.getTreasuresGained();
+    ##  
+    ##  CardDealer baraja = CardDealer.getInstance();
+    ##  
+    ##  for(int i = 0 ; i<tesoros ; i++){
+    ##      hiddenTreasures.add(baraja.nextTreasure());
+    ##  }
+  ##}
+  ##
+ ## private void applyBadConsequence(Monster m){
+   ##   
+   ##   BadConsequence bad = m.getBadConsequence();
+   ##   
+   ##   int niveles = bad.getLevels();
+   ##   
+   ##   this.decrementLevels(niveles);
+   ## 
+   ##   BadConsequence pendingBad = pendingBadConsequence; // Si no le daba un valor inicial e igualaba directamente, daba error.
+   ##   
+   ##   pendingBad.adjustToFitTreasureLists(visibleTreasures,hiddenTreasures);
+   ##   
+   ##   this.setPendingBadConsequence(pendingBad);
+   ##   
+  ##}
+  ##
+  ## public Treasure stealTreasure(){
+    ##  boolean canI = this.canISteal();
+     ## Treasure treasure = null;
+     ## 
+     ## if(canI){
+       ##   boolean canYou = enemy.canYouGiveMeATreasure();
+       ##   if(canYou){
+       ##       treasure=enemy.giveMeATreasure();
+       ##       this.hiddenTreasures.add(treasure);
+       ##       this.haveStolen();
+       ##   }
+      ##}
+      ## return treasure;
+  ## }
+  ##
+ ## private Treasure giveMeATreasure(){
+ ##      
+ ##      Treasure solucion;
+ ##      int posAleatorio = (int) Math.random()*hiddenTreasures.size();
+ ##      solucion = hiddenTreasures.get(posAleatorio);
+ ##      
+ ##      return solucion;
+ ## }
+ ## AQUI EMPIEZO YO
+ ##
+  def discard_visible_treasure(t)
+      
+      @visible_treasures.remove(t)
+      
+      if @pending_bad_consequence != nil  and !@pending_bad_consequence.is_empty
+           
+          @pending_bad_consequence.substract_visible_treasure(t)
+      
+      die_if_no_treasures 
+      
+    end
+  end
+      
   
-  private boolean canMakeTreasureVisible(Treasure t){
-      
-      boolean solucion=true;
-      
-      for(Treasure iterador  : visibleTreasures){
-          int contadorOneHand = 0;
-          
-          if(iterador.getType() == TreasureKind.ONEHAND){
-              contadorOneHand++;
-          }
-          if(!(contadorOneHand<2 || t.getType()==TreasureKind.ONEHAND)){
-              
-                if(iterador.getType() == t.getType()){
-                solucion = false;
-                }
-                if(iterador.getType()==TreasureKind.BOTHHANDS && t.getType() == TreasureKind.ONEHAND  ){
-                    solucion = false;
-                }
-                if(iterador.getType()==TreasureKind.ONEHAND && t.getType() == TreasureKind.BOTHHANDS ){
-                    solucion = false;
-                }
-          }
-          
-          
-      }
-      
-      return solucion;
-  }
-  
-  private void applyPrize(Monster m){
-      this.incrementLevels(m.getLevelsGained());
-      int tesoros = m.getTreasuresGained();
-      
-      CardDealer baraja = CardDealer.getInstance();
-      
-      for(int i = 0 ; i<tesoros ; i++){
-          hiddenTreasures.add(baraja.nextTreasure());
-      }
-  }
-  
-  private void applyBadConsequence(Monster m){
-      
-      BadConsequence bad = m.getBadConsequence();
-      
-      int niveles = bad.getLevels();
-      
-      this.decrementLevels(niveles);
-    
-      BadConsequence pendingBad = pendingBadConsequence; // Si no le daba un valor inicial e igualaba directamente, daba error.
-      
-      pendingBad.adjustToFitTreasureLists(visibleTreasures,hiddenTreasures);
-      
-      this.setPendingBadConsequence(pendingBad);
-      
-  }
-  
-  public Treasure stealTreasure(){
-      boolean canI = this.canISteal();
-      Treasure treasure = null;
-      
-      if(canI){
-          boolean canYou = enemy.canYouGiveMeATreasure();
-          if(canYou){
-              treasure=enemy.giveMeATreasure();
-              this.hiddenTreasures.add(treasure);
-              this.haveStolen();
-          }
-      }
-      return treasure;
-  }
-  
-  private Treasure giveMeATreasure(){
-       
-       Treasure solucion;
-       int posAleatorio = (int) Math.random()*hiddenTreasures.size();
-       solucion = hiddenTreasures.get(posAleatorio);
-       
-       return solucion;
-  }
-  
-  public void discardVisibleTreasure(Treasure t){
-      
-      visibleTreasures.remove(t);
-      
-      if((pendingBadConsequence != null) && (!pendingBadConsequence.isEmpty())){
-            pendingBadConsequence.substractVisibleTreasure(t);
-      }
-       
-      dieIfNoTreasures();
-  }
   
   public void discardHiddenTreasure(Treasure t){
       
