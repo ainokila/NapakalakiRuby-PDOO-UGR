@@ -82,17 +82,17 @@ class Napakalaki
     
     pos_aleatorio = 0
     tamanio = @players.length
-    
+      
      @players.each do |iterador|
         
        pos_aleatorio =  Random.rand(1...tamanio)
-       
+       puts pos_aleatorio
        while (@players.index(pos_aleatorio) == iterador)
            
            pos_aleatorio =  Random.rand(1...tamanio)
        end
-        
-       iterador.set_enemy_player(@players.index(pos_aleatorio));
+       jugador = Player.new(@player.index(pos_aleatorio))
+       iterador.set_enemy_player(jugador)
      end
   end
   private :set_enemies
@@ -139,7 +139,7 @@ class Napakalaki
     
   end
       
-  def init_game(player)
+  def initGame(player)
     
     init_players(player);
     set_enemies
