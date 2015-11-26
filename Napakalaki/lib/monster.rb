@@ -26,7 +26,7 @@ class Monster
     price.treasures
   end
   
-  def to_s
+  def to_s()
     "******************************\n Nombre del Monstruo: #{@name}\n Nivel de combate: #{@combat_level.to_s}\n #{@bad_consequence.to_s}\n #{@price.to_s}" 
   end
   

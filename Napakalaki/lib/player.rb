@@ -393,5 +393,8 @@ end
           hidden_treasures.delete(t);
       end
   end
+  def to_s
+    "#{@name}" 
+  end
 
 end

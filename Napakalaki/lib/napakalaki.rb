@@ -179,5 +179,12 @@ class Napakalaki
     
     resultado    
   end
+  def getCurrentPlayer
+    @current_player
+  end
+  
+  def getCurrentMonster
+    @current_monster
+  end
 
 end

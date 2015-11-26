@@ -13,10 +13,7 @@ class CardDealer
   attr_accessor :unused_treasures ,:used_treasures, :unused_monster ,:used_monster
     
   def initialize
-    @unused_treasures = Array.new
-    @used_treasures = Array.new
-    @unused_monster = Array.new
-    @used_monster = Array.new
+    
   end
   
   def self.get_instance
@@ -25,6 +22,8 @@ class CardDealer
   
   def init_treasure_card_deck
     #Crear los treasures
+      @unused_treasures = Array.new
+      @used_treasures = Array.new
       @unused_treasures << Treasure.new("Si mi amo", 4, TreasureKind::HELMET)
       @unused_treasures << Treasure.new("Botas de investigacion", 3, TreasureKind::SHOES)
       @unused_treasures << Treasure.new("Capucha de Cthulhu", 3,  TreasureKind::HELMET)
@@ -63,6 +62,8 @@ class CardDealer
   private :init_treasure_card_deck
   
   def init_monster_card_deck
+    @unused_monster = Array.new
+    @used_monster = Array.new
     #Crear los treasures
         #Monstruo 1
 
@@ -70,7 +71,7 @@ class CardDealer
 
     bad_consequence1 = Bad_consequence.new_level_specific_treasures('Pierdes tu armadura visible y otra oculta.', 0 ,[TreasureKind::ARMOR],[TreasureKind::ARMOR])
 
-    @unused_treasures << Monster.new('Byakhees de bonanza', 8, bad_consequence1, prize1)
+    @unused_monster << Monster.new('Byakhees de bonanza', 8, bad_consequence1, prize1)
 
     #Monstruo 2
 
@@ -78,7 +79,7 @@ class CardDealer
 
     bad_consequence2 = Bad_consequence.new_level_specific_treasures('Embobados con el lindo primigenio te descartas de tu casco visible.', 0 ,[TreasureKind::HELMET],[])
 
-    @unused_treasures << Monster.new('Chibithulhu', 2, bad_consequence2, prize2)
+    @unused_monster << Monster.new('Chibithulhu', 2, bad_consequence2, prize2)
 
     #Monstruo 3
 
@@ -86,7 +87,7 @@ class CardDealer
 
     bad_consequence3 = Bad_consequence.new_level_specific_treasures('El primordial bostezo contagioso. Pierdes el calzado visible.', 0 ,[TreasureKind::SHOES],[])
 
-    @unused_treasures << Monster.new('EL sopor de Dunwich', 2, bad_consequence3, prize3)
+    @unused_monster << Monster.new('EL sopor de Dunwich', 2, bad_consequence3, prize3)
 
 
     #Monstruo 4
@@ -96,7 +97,7 @@ class CardDealer
     bad_consequence4 = Bad_consequence.new_level_specific_treasures('Te atrapan para llevarte de fiesta y te dejan caer en mitad del vuelo. Descarta 1 mano visible y 1 mano oculta.', 0,
       [TreasureKind::ONEHAND],[TreasureKind::ONEHAND])
 
-    @unused_treasures << Monster.new('Angeles de la noche ibicenca', 14, bad_consequence4, prize4)
+    @unused_monster << Monster.new('Angeles de la noche ibicenca', 14, bad_consequence4, prize4)
 
     #Monstruo 5
 
@@ -104,7 +105,7 @@ class CardDealer
 
     bad_consequence5 = Bad_consequence.new_level_number_of_treasures('Pierdes todos tus tesoros visibles.', 0 ,6,0)
 
-    @unused_treasures << Monster.new('El gorron en el umbral', 10, bad_consequence5, prize5)
+    @unused_monster << Monster.new('El gorron en el umbral', 10, bad_consequence5, prize5)
 
     #Monstruo 6
 
@@ -112,7 +113,7 @@ class CardDealer
 
     bad_consequence6 = Bad_consequence.new_level_specific_treasures('Pierdes tu armadura visible.', 0, [TreasureKind::ARMOR],[])
 
-    @unused_treasures << Monster.new('H.P. Munchcraft', 6, bad_consequence6, prize6)
+    @unused_monster << Monster.new('H.P. Munchcraft', 6, bad_consequence6, prize6)
 
     #Monstruo 7
 
@@ -120,7 +121,7 @@ class CardDealer
 
     bad_consequence7 = Bad_consequence.new_level_specific_treasures('Sientes bichos bajo la ropa. Descartas la armadura visible.', 0, [TreasureKind::ARMOR],[])
 
-    @unused_treasures << Monster.new('Bichgooth', 2, bad_consequence7, prize7)
+    @unused_monster << Monster.new('Bichgooth', 2, bad_consequence7, prize7)
 
 
     #Monstruo 8
@@ -129,7 +130,7 @@ class CardDealer
 
     bad_consequence8 = Bad_consequence.new_level_number_of_treasures('Pierdes 5 niveles y 3 tesoros visibles',5 , 3, 0)
 
-    @unused_treasures << Monster.new('El rey de rosa',13 , bad_consequence8 , prize8)
+    @unused_monster << Monster.new('El rey de rosa',13 , bad_consequence8 , prize8)
 
     #Monstruo 9
 
@@ -137,7 +138,7 @@ class CardDealer
 
     bad_consequence9 = Bad_consequence.new_level_number_of_treasures('Toses los pulmones y pierdes 2 niveles.',2 ,0, 0)
 
-    @unused_treasures << Monster.new('La que redacta en las tinieblas',2 , bad_consequence9 , prize9)
+    @unused_monster << Monster.new('La que redacta en las tinieblas',2 , bad_consequence9 , prize9)
 
     #Monstruo 10
 
@@ -145,7 +146,7 @@ class CardDealer
 
     bad_consequence10 = Bad_consequence.new_death('Estos monstruos resultan bastantes superficiales y te aburren mortalmente. Estas muerto.')
 
-    @unused_treasures << Monster.new('Los hondos',8 , bad_consequence10 , prize10)
+    @unused_monster << Monster.new('Los hondos',8 , bad_consequence10 , prize10)
 
     #Monstruo 11
 
@@ -153,7 +154,7 @@ class CardDealer
 
     bad_consequence11 = Bad_consequence.new_level_number_of_treasures('Pierdes 2 niveles y 2 tesoros ocultos.',2 , 0, 2)
 
-    @unused_treasures << Monster.new('Semillas Cthulhu',4, bad_consequence11 , prize11)
+    @unused_monster << Monster.new('Semillas Cthulhu',4, bad_consequence11 , prize11)
 
     #Monstruo 12
 
@@ -161,7 +162,7 @@ class CardDealer
 
     bad_consequence12 = Bad_consequence.new_level_specific_treasures('Te intentas escaquear. Pierdes una mano visible.', 0, [TreasureKind::ONEHAND],[])
 
-    @unused_treasures << Monster.new('Dameargo',1, bad_consequence12 , prize12)
+    @unused_monster << Monster.new('Dameargo',1, bad_consequence12 , prize12)
 
     #Monstruo 13
 
@@ -169,7 +170,7 @@ class CardDealer
 
     bad_consequence13 = Bad_consequence.new_level_number_of_treasures('Da mucho asquito. Pierdes 3 niveles.',3 , 0, 0)
 
-    @unused_treasures << Monster.new('Pollipolipo volante',3, bad_consequence13 , prize13)
+    @unused_monster << Monster.new('Pollipolipo volante',3, bad_consequence13 , prize13)
 
     #Monstruo 14
 
@@ -177,7 +178,7 @@ class CardDealer
 
     bad_consequence14 = Bad_consequence.new_death('No le hace gracia que pronuncien mal su nombre. Estas muerto.')
 
-    @unused_treasures << Monster.new('Yskhtihyssg-Goth',12 , bad_consequence14 , prize14)
+    @unused_monster << Monster.new('Yskhtihyssg-Goth',12 , bad_consequence14 , prize14)
 
     #Monstruo 15
 
@@ -185,7 +186,7 @@ class CardDealer
 
     bad_consequence15 = Bad_consequence.new_death('La familia te atrapa. Estas muerto.')
 
-    @unused_treasures << Monster.new('Familia feliz',1 , bad_consequence15 , prize15)
+    @unused_monster << Monster.new('Familia feliz',1 , bad_consequence15 , prize15)
 
     #Monstruo 16
 
@@ -193,7 +194,7 @@ class CardDealer
 
     bad_consequence16 = Bad_consequence.new_level_specific_treasures('La quinta directiva te obliga a perder 2 niveles y un tesoro de 2 manos visible.', 2, [TreasureKind::BOTHHANDS],[])
 
-    @unused_treasures << Monster.new('Roboggoth',8, bad_consequence16 , prize16)
+    @unused_monster << Monster.new('Roboggoth',8, bad_consequence16 , prize16)
 
     #Monstruo 17
 
@@ -201,7 +202,7 @@ class CardDealer
 
     bad_consequence17 = Bad_consequence.new_level_specific_treasures('Te asusta en la noche. Pierdes un casco visible.', 0, [TreasureKind::HELMET],[])
 
-    @unused_treasures << Monster.new('El espia',5, bad_consequence17 , prize17)
+    @unused_monster << Monster.new('El espia',5, bad_consequence17 , prize17)
 
     #Monstruo 18
 
@@ -209,7 +210,7 @@ class CardDealer
 
     bad_consequence18 = Bad_consequence.new_level_number_of_treasures('Menudo susto te llevas.Pierdes 2 niveles y 5 tesoros visibles.',2 , 5, 0)
 
-    @unused_treasures << Monster.new('El lenguas',20, bad_consequence18 , prize18)
+    @unused_monster << Monster.new('El lenguas',20, bad_consequence18 , prize18)
 
     #Monstruo 19
 
@@ -218,18 +219,18 @@ class CardDealer
     bad_consequence19 = Bad_consequence.new_level_specific_treasures('Te faltan manos para tanta cabeza. Pierdes todos tus tesoros visibles de las manos.', 0,
                             [TreasureKind::BOTHHANDS,TreasureKind::ONEHAND,TreasureKind::ONEHAND],[])
 
-    @unused_treasures << Monster.new('Bicefalo',20, bad_consequence19 , prize19) 
+    @unused_monster << Monster.new('Bicefalo',20, bad_consequence19 , prize19) 
     #puts monsters
-
+    
   end
   private :init_monster_card_deck
   
   def shuffle_treasures
-    @unused_treasures = @unusuded_treasures.shuffle
+    @unused_treasures = @unused_treasures.shuffle
   end
   
   def shuffle_monster
-    @unused_monster = @unusuded_monster.shuffle
+    @unused_monster = @unused_monster.shuffle
   end
   
   def next_treasure
