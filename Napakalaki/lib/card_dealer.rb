@@ -10,9 +10,8 @@ require 'singleton'
 class CardDealer
   
   include Singleton
-  attr_accesor :unused_treasures ,:used_treasures, :unused_monster ,:used_monster
-  private_class_method :init_treasure_card_deck , :init_monster_card_deck
-  
+  attr_accessor :unused_treasures ,:used_treasures, :unused_monster ,:used_monster
+    
   def initialize
     @unused_treasures = Array.new
     @used_treasures = Array.new
@@ -58,9 +57,10 @@ class CardDealer
       @unused_treasures << Treasure.new("Zapato deja-amigos",  0,  SHOES)
       @unused_treasures << Treasure.new("Shogulador", 1, BOTHHAND)
       @unused_treasures << Treasure.new("Varita de atizamiento", 3,ONEHAND)
-    
+      
     
   end
+  private :init_treasure_card_deck
   
   def init_monster_card_deck
     #Crear los treasures
@@ -222,6 +222,7 @@ class CardDealer
     #puts monsters
 
   end
+  private :init_monster_card_deck
   
   def shuffle_treasures
     @unused_treasures = @unusuded_treasures.shuffle
