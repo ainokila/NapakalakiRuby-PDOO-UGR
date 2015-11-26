@@ -27,6 +27,7 @@ class Napakalaki
        jugador = Player.new(iterador)
        @players << jugador
       end
+      @current_player = next_player
   end
   private :init_players
  
@@ -41,7 +42,7 @@ class Napakalaki
           numeroJugadores = @players.length - 1
           posicion =  Random.rand(1..numeroJugadores)
           aux = @players.index(posicion)
-      
+          @currentPlayer=aux
                    
     
       else
@@ -75,6 +76,7 @@ class Napakalaki
     else
         solucion = @current_player.valid_state
     end
+    puts solucion
     solucion
   end
   private :next_turn_allowed
@@ -153,9 +155,9 @@ class Napakalaki
      
     state_ok = false
     state_ok = next_turn_allowed 
-   
+    puts 'Llega aqui'
    if state_ok == true
-       
+       puts 'Llega aqui'
        @current_monster = dealer.next_monster
        @current_player = next_player
        
