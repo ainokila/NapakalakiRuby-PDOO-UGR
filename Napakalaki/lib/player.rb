@@ -130,7 +130,7 @@ class Player
      
      solucion=true
      
-     if !@pending_bad_consequence.is_empty? and @hidden_treasures.length < 4
+     if !@pending_bad_consequence.is_empty? and @hidden_treasures.length > 4
          
          solucion = false
      end
@@ -245,7 +245,7 @@ end
    
   private :apply_prize
   
-    def applyBadConsequence(m)
+    def apply_bad_consequence(m)
       
       bad = m.get_bad_consequence
       niveles = bad.get_levels

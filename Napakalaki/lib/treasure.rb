@@ -4,7 +4,7 @@
 
 class Treasure
   
-  attr_accesor :name, :bonus ,:type
+  attr_accessor :name, :bonus ,:type
   
   def initialize(nombre,bon,kind)
     @name=nombre
