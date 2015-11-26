@@ -90,8 +90,9 @@ class Napakalaki
        while (@players.at(pos_aleatorio) == iterador)
            pos_aleatorio =  Random.rand(1...tamanio)
        end
-       jugador = Player.new(@players.at(pos_aleatorio))
        puts 'Llega aqui'
+       nombre=@players.at(pos_aleatorio)
+       jugador = Player.new(nombre)
        iterador.set_enemy_player(jugador)
      end
   end
