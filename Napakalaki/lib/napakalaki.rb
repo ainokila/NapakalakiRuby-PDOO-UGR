@@ -172,7 +172,7 @@ class Napakalaki
   def end_of_game(result)
     
     resultado=false
-    
+    #
     if result.to_s == "WINGAME"
             resultado = true
     end
