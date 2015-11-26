@@ -39,7 +39,7 @@ class Napakalaki
      
       if @currentPlayer.nil?
           numeroJugadores = @players.length - 1
-          posicion =  Random.rand(1...numeroJugadores)
+          posicion =  Random.rand(1..numeroJugadores)
           aux = @players.index(posicion)
       
                    
