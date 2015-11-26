@@ -1,8 +1,8 @@
 # To change this license header, choose License Headers in Project Properties.
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
-require_relative "card_dealer"
-require_relative "player"
+require_relative "card_dealer.rb"
+require_relative "player.rb"
 require 'singleton'
 
 class Napakalaki
@@ -84,14 +84,14 @@ class Napakalaki
     tamanio = @players.length
       
      @players.each do |iterador|
-        
+
        pos_aleatorio =  Random.rand(1...tamanio)
-       puts pos_aleatorio
-       while (@players.index(pos_aleatorio) == iterador)
-           
+
+       while (@players.at(pos_aleatorio) == iterador)
            pos_aleatorio =  Random.rand(1...tamanio)
        end
-       jugador = Player.new(@player.index(pos_aleatorio))
+       jugador = Player.new(@players.at(pos_aleatorio))
+       puts 'Llega aqui'
        iterador.set_enemy_player(jugador)
      end
   end
