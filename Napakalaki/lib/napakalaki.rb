@@ -12,7 +12,7 @@ class Napakalaki
   #private :init_players , :next_player, :next_turn_allowed , :set_enemies
     
   def initialize
-  
+    @dealer = CardDealer.get_instance
   end
   
   def self.get_instance
