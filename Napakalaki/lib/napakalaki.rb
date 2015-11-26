@@ -24,7 +24,8 @@ class Napakalaki
     
      @players = Array.new
      names.each do |iterador|
-     @players << iterador
+       jugador = Player.new(iterador)
+       @players << jugador
       end
   end
   private :init_players
@@ -85,16 +86,15 @@ class Napakalaki
       
      @players.each do |iterador|
 
-       pos_aleatorio =  Random.rand(1...tamanio)
+       pos_aleatorio =  Random.rand(1..tamanio)
 
        while (@players.at(pos_aleatorio) == iterador)
-           pos_aleatorio =  Random.rand(1...tamanio)
+           pos_aleatorio =  Random.rand(1..tamanio)
+           puts pos_aleatorio
        end
-       puts 'Llega aqui'
-       nombre=@players.at(pos_aleatorio)
-       jugador = Player.new(nombre)
-       iterador.set_enemy_player(jugador)
+       iterador.set_enemy_player(@players.at(pos_aleatorio))
      end
+     
   end
   private :set_enemies
   
