@@ -9,7 +9,7 @@ class Napakalaki
   include Singleton
   
   attr_accessor :current_player, :players, :dealer, :current_monster
-  private_class_method :init_players , :next_player, :next_turn_allowed , :set_enemies ,
+  #private :init_players , :next_player, :next_turn_allowed , :set_enemies
     
   def initialize
   
@@ -27,6 +27,7 @@ class Napakalaki
      @players << iterador
       end
   end
+  private :init_players
  
         
   def next_player
@@ -62,6 +63,7 @@ class Napakalaki
       end
     aux
   end
+  private :next_player
 
   def next_turn_allowed
        
@@ -74,6 +76,7 @@ class Napakalaki
     end
     solucion
   end
+  private :next_turn_allowed
 
   def set_enemies
     
@@ -92,6 +95,7 @@ class Napakalaki
        iterador.set_enemy_player(@players.index(pos_aleatorio));
      end
   end
+  private :set_enemies
   
   def develop_combat
       m = @current_onster;
