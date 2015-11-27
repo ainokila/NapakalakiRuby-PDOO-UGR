@@ -4,6 +4,7 @@
 
 require_relative 'treasure'
 require_relative 'bad_consequence.rb'
+require_relative 'dice.rb'
 
 class Player
   attr_accessor :name, :level, :dead, :can_i_steal, :hidden_treasures, :visible_treasures, :enemy, :pending_bad_consequence
@@ -334,10 +335,10 @@ end
       
   def init_treasures
     
-      dealer = card_dealer.get_instance
-      d = dice.get_instance
+      dealer = CardDealer.instance
+      d = Dice.instance
       
-      self.bring_to_life
+      bring_to_life
       
       treasure = dealer.next_treasure
       @hidden_treasures << treasure
@@ -392,6 +393,15 @@ end
           hidden_treasures.delete(t);
       end
   end
+  
+  def getVisibleTreasures
+    @visible_treasures
+  end
+  
+  def getHiddenTreasures
+    @hidden_treasures
+  end
+  
   def to_s
     "#{@name}" 
   end

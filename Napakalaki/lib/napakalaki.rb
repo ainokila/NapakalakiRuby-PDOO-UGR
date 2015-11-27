@@ -46,9 +46,9 @@ class Napakalaki
                    
     
       else
-       
+        
         @players.each do |iterador|
-          contador++
+          contador = contador + 1
           if(@currentPlayer == iterador)
               posicion = contador          
           end
@@ -100,7 +100,7 @@ class Napakalaki
   end
   private :set_enemies
   
-  def develop_combat
+  def developCombat
       m = @current_onster;
       combat_result = @current_player.combat(m);
     
