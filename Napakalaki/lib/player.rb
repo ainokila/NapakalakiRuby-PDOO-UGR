@@ -3,7 +3,7 @@
 # and open the template in the editor.
 
 require_relative 'treasure'
-require_relative 'bad_consequence'
+require_relative 'bad_consequence.rb'
 
 class Player
   attr_accessor :name, :level, :dead, :can_i_steal, :hidden_treasures, :visible_treasures, :enemy, :pending_bad_consequence
@@ -20,6 +20,7 @@ class Player
       @visible_treasures = Array.new
       @hidden_treasures = Array.new
       @can_i_steal = true
+      @pending_bad_consequence = Bad_consequence.new_level_number_of_treasures('',0,0,0)
       
    end
    
@@ -130,7 +131,7 @@ class Player
      
      solucion=true
      
-     if !@pending_bad_consequence.is_empty? and @hidden_treasures.length > 4
+     if !@pending_bad_consequence.is_empty and @hidden_treasures.length > 4
          
          solucion = false
      end
