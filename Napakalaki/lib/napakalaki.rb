@@ -41,7 +41,7 @@ class Napakalaki
       if @currentPlayer.nil?
           numeroJugadores = @players.length - 1
           posicion =  Random.rand(1..numeroJugadores)
-          aux = @players.index(posicion)
+          aux = @players.at(posicion)
           @currentPlayer=aux
                    
     
@@ -56,9 +56,9 @@ class Napakalaki
         posicion = posicion +1
         
         if posicion >= @players.length
-                aux = @players.index(0);
+                aux = @players.at(0);
         else
-                aux = @players.index(posicion);
+                aux = @players.at(posicion);
         
                 
        end
@@ -76,7 +76,7 @@ class Napakalaki
     else
         solucion = @current_player.valid_state
     end
-    puts solucion
+    
     solucion
   end
   private :next_turn_allowed

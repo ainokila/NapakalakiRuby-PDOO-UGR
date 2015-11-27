@@ -138,8 +138,6 @@ class Player
      solucion
   end   
  
-  private :valid_state
- 
   def how_many_visible_treasures(tKind)
       
       solucion = 0
