@@ -5,6 +5,8 @@
 require_relative 'treasure'
 require_relative 'bad_consequence.rb'
 require_relative 'dice.rb'
+require_relative 'combat_result.rb'
+
 
 class Player
   attr_accessor :name, :level, :dead, :can_i_steal, :hidden_treasures, :visible_treasures, :enemy, :pending_bad_consequence
@@ -369,16 +371,16 @@ end
         apply_prize(m)
           
           if @level >= @@MAXLEVEL
-                combate = combat_result.WINGAME
+                combate = CombatResult::WINGAME
           
           else
-               combate = combat_result.WIN;
+               combate = CombatResult::WIN;
           end
          
       else
           apply_bad_consequence(m)
           
-          combate = combat_result.LOSE;
+          combate = CombatResult::LOSE;
       end
       
       combate

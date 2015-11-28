@@ -70,7 +70,7 @@ class Bad_consequence
     @specificHiddeTreasures.delete(t.type)
   end
   
-  def adjust_to_fit_lists(v, h)
+  def adjust_to_fit_treasure_list(v, h)
       #YO NO LO HARIA ASÍ 
         visible = Array.new
         hidden = Array.new
@@ -90,7 +90,7 @@ class Bad_consequence
             end
         end  
         
-        bad_cons = bad_consequence.new_level_specific_treasures(@text, 0, visible, hidden)
+        bad_cons = Bad_consequence.new_level_specific_treasures(@text, 0, visible, hidden)
 
         bad_cons
         
