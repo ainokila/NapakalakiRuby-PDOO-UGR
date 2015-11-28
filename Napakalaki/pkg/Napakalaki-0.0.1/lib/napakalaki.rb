@@ -1,18 +1,18 @@
 # To change this license header, choose License Headers in Project Properties.
 # To change this template file, choose Tools | Templates
 # and open the template in the editor.
-require_relative "card_dealer"
-require_relative "player"
+require_relative "card_dealer.rb"
+require_relative "player.rb"
 require 'singleton'
 
 class Napakalaki
   include Singleton
   
   attr_accessor :current_player, :players, :dealer, :current_monster
-  private_class_method :init_players , :next_player, :next_turn_allowed , :set_enemies ,
+  #private :init_players , :next_player, :next_turn_allowed , :set_enemies
     
   def initialize
-  
+    @dealer = CardDealer.get_instance
   end
   
   def self.get_instance
@@ -24,9 +24,12 @@ class Napakalaki
     
      @players = Array.new
      names.each do |iterador|
-     @players << iterador
+       jugador = Player.new(iterador)
+       @players << jugador
       end
+      @current_player = next_player
   end
+  private :init_players
  
         
   def next_player
@@ -37,15 +40,15 @@ class Napakalaki
      
       if @currentPlayer.nil?
           numeroJugadores = @players.length - 1
-          posicion =  Random.rand(1...numeroJugadores)
-          aux = @players.index(posicion)
-      
+          posicion =  Random.rand(1..numeroJugadores)
+          aux = @players.at(posicion)
+          @currentPlayer=aux
                    
     
       else
-       
+        
         @players.each do |iterador|
-          contador++
+          contador = contador + 1
           if(@currentPlayer == iterador)
               posicion = contador          
           end
@@ -53,15 +56,16 @@ class Napakalaki
         posicion = posicion +1
         
         if posicion >= @players.length
-                aux = @players.index(0);
+                aux = @players.at(0);
         else
-                aux = @players.index(posicion);
+                aux = @players.at(posicion);
         
                 
        end
       end
     aux
   end
+  private :next_player
 
   def next_turn_allowed
        
@@ -72,29 +76,32 @@ class Napakalaki
     else
         solucion = @current_player.valid_state
     end
+    
     solucion
   end
+  private :next_turn_allowed
 
   def set_enemies
     
     pos_aleatorio = 0
     tamanio = @players.length
-    
+      
      @players.each do |iterador|
-        
-       pos_aleatorio =  Random.rand(1...tamanio)
-       
-       while (@players.index(pos_aleatorio) == iterador)
-           
-           pos_aleatorio =  Random.rand(1...tamanio)
+
+       pos_aleatorio =  Random.rand(1..tamanio)
+
+       while (@players.at(pos_aleatorio) == iterador)
+           pos_aleatorio =  Random.rand(1..tamanio)
+           puts pos_aleatorio
        end
-        
-       iterador.set_enemy_player(@players.index(pos_aleatorio));
+       iterador.set_enemy_player(@players.at(pos_aleatorio))
      end
+     
   end
+  private :set_enemies
   
-  def develop_combat
-      m = @current_onster;
+  def developCombat
+      m = @current_monster;
       combat_result = @current_player.combat(m);
     
     @dealer.give_monster_back(m);
@@ -135,7 +142,7 @@ class Napakalaki
     
   end
       
-  def init_game(player)
+  def initGame(player)
     
     init_players(player);
     set_enemies
@@ -148,9 +155,9 @@ class Napakalaki
      
     state_ok = false
     state_ok = next_turn_allowed 
-   
+    puts 'Llega aqui'
    if state_ok == true
-       
+       puts 'Llega aqui'
        @current_monster = dealer.next_monster
        @current_player = next_player
        
@@ -167,12 +174,19 @@ class Napakalaki
   def end_of_game(result)
     
     resultado=false
-    
+    #
     if result.to_s == "WINGAME"
             resultado = true
     end
     
     resultado    
+  end
+  def getCurrentPlayer
+    @current_player
+  end
+  
+  def getCurrentMonster
+    @current_monster
   end
 
 end

@@ -101,7 +101,7 @@ class Napakalaki
   private :set_enemies
   
   def developCombat
-      m = @current_onster;
+      m = @current_monster;
       combat_result = @current_player.combat(m);
     
     @dealer.give_monster_back(m);

@@ -53,7 +53,7 @@ class Bad_consequence
   def is_empty
      
     @solucion 
-         if @text == " " and @levels == 0 and @nVisibleTreasures == 0 and  @nHiddenTreasures == 0 and @death ==false and @specificVisibleTreasures.empty? and @specificHiddenTreasures.empty?
+         if @text == "" and @levels == 0 and @nVisibleTreasures == 0 and  @nHiddenTreasures == 0 and @death ==false and @specificVisibleTreasures.empty? and @specificHiddenTreasures.empty?
                     
               solucion = true
          end
@@ -94,6 +94,10 @@ class Bad_consequence
 
         bad_cons
         
+    end
+    
+    def get_levels
+       @levels
     end
     
   end

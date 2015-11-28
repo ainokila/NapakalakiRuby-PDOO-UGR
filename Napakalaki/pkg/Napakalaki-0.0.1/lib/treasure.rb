@@ -4,12 +4,15 @@
 
 class Treasure
   
-  attr_accesor :name, :bonus ,:type
+  attr_accessor :name, :bonus ,:type
   
   def initialize(nombre,bon,kind)
     @name=nombre
     @bonus=bon
     @type=kind
   end
- 
+  
+  def to_s()
+    "Nombre =  #{@name} Bonus= #{@bonus}\n || tipo = #{@type}"
+  end
 end

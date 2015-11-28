@@ -18,6 +18,13 @@ class Monster
     
   end
   
+  def get_bad_consequence
+    @bad_consequence
+  end
+  def get_combatlevel
+    @combat_level
+  end
+  
   def get_levels_gained
     price.level
   end

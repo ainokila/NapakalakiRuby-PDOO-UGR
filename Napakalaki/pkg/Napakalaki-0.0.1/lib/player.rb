@@ -3,7 +3,8 @@
 # and open the template in the editor.
 
 require_relative 'treasure'
-require_relative 'bad_consequence'
+require_relative 'bad_consequence.rb'
+require_relative 'dice.rb'
 
 class Player
   attr_accessor :name, :level, :dead, :can_i_steal, :hidden_treasures, :visible_treasures, :enemy, :pending_bad_consequence
@@ -20,6 +21,7 @@ class Player
       @visible_treasures = Array.new
       @hidden_treasures = Array.new
       @can_i_steal = true
+      @pending_bad_consequence = Bad_consequence.new_level_number_of_treasures('',0,0,0)
       
    end
    
@@ -130,15 +132,13 @@ class Player
      
      solucion=true
      
-     if !@pending_bad_consequence.is_empty? and @hidden_treasures.length < 4
+     if !@pending_bad_consequence.is_empty and @hidden_treasures.length > 4
          
          solucion = false
      end
      
      solucion
   end   
- 
-  private :valid_state
  
   def how_many_visible_treasures(tKind)
       
@@ -245,11 +245,11 @@ end
    
   private :apply_prize
   
-    def applyBadConsequence(m)
+    def apply_bad_consequence(m)
       
       bad = m.get_bad_consequence
       niveles = bad.get_levels
-      self.decrement_levels(niveles)
+      decrement_levels(niveles)
       
       pending_bad = @pending_bad_consequence
       
@@ -335,10 +335,9 @@ end
       
   def init_treasures
     
-      dealer = card_dealer.get_instance
-      d = dice.get_instance
-      
-      self.bring_to_life
+      dealer = CardDealer.instance
+      d = Dice.instance
+      bring_to_life
       
       treasure = dealer.next_treasure
       @hidden_treasures << treasure
@@ -355,6 +354,7 @@ end
           @hidden_treasures << treasure
           
       end
+ 
   end
   
   def combat(m)
@@ -392,6 +392,18 @@ end
           @visible_treasures << t
           hidden_treasures.delete(t);
       end
+  end
+  
+  def getVisibleTreasures
+    @visible_treasures
+  end
+  
+  def getHiddenTreasures
+   @hidden_treasures
+  end
+  
+  def to_s
+    "#{@name} Nivel: #{@level}" 
   end
 
 end

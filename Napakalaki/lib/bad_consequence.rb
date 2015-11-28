@@ -96,6 +96,10 @@ class Bad_consequence
         
     end
     
+    def get_levels
+       @levels
+    end
+    
   end
        
  

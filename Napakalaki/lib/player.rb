@@ -249,7 +249,7 @@ end
       
       bad = m.get_bad_consequence
       niveles = bad.get_levels
-      self.decrement_levels(niveles)
+      decrement_levels(niveles)
       
       pending_bad = @pending_bad_consequence
       
@@ -337,7 +337,6 @@ end
     
       dealer = CardDealer.instance
       d = Dice.instance
-      
       bring_to_life
       
       treasure = dealer.next_treasure
@@ -355,6 +354,7 @@ end
           @hidden_treasures << treasure
           
       end
+ 
   end
   
   def combat(m)
@@ -399,11 +399,11 @@ end
   end
   
   def getHiddenTreasures
-    @hidden_treasures
+   @hidden_treasures
   end
   
   def to_s
-    "#{@name}" 
+    "#{@name} Nivel: #{@level}" 
   end
 
 end

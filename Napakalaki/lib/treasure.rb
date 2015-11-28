@@ -11,5 +11,8 @@ class Treasure
     @bonus=bon
     @type=kind
   end
- 
+  
+  def to_s()
+    "Nombre =  #{@name} Bonus= #{@bonus}\n || tipo = #{@type}"
+  end
 end
