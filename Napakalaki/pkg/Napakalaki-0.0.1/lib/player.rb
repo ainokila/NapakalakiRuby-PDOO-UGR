@@ -360,7 +360,7 @@ end
   end
   
   def combat(m)
-    
+      
       
       my_level = get_combat_level
       monster_level = m.get_combatlevel
@@ -371,16 +371,16 @@ end
         apply_prize(m)
           
           if @level >= @@MAXLEVEL
-            combate = CombatResult::WINGAME
+            combate = NapakalakiGame::CombatResult::WINGAME
           
           else
-            combate = CombatResult::WIN;
+            combate = NapakalakiGame::CombatResult::WIN
           end
          
       else
           apply_bad_consequence(m)
           
-      combate = CombatResult::LOSE;
+      combate = NapakalakiGame::CombatResult::LOSE
       end
       
       combate

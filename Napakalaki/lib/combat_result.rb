@@ -3,11 +3,12 @@
 # and open the template in the editor.
 
 #encoding: utf-8
+module NapakalakiGame
+  module CombatResult
 
-module CombatResult
-  
-    WINGAME = :WINGAME
-    WIN = :WIN
-    LOSE = :LOSE
-    
+      WINGAME = :WINGAME
+      WIN = :WIN
+      LOSE = :LOSE
+
+  end
 end
