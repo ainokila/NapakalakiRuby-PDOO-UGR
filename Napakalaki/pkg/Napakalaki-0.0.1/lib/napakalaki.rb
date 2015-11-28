@@ -155,9 +155,8 @@ class Napakalaki
      
     state_ok = false
     state_ok = next_turn_allowed 
-    puts 'Llega aqui'
+
    if state_ok == true
-       puts 'Llega aqui'
        @current_monster = dealer.next_monster
        @current_player = next_player
        
