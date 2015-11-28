@@ -371,16 +371,16 @@ end
         apply_prize(m)
           
           if @level >= @@MAXLEVEL
-                combate = CombatResult::WINGAME
+                combate = WINGAME
           
           else
-               combate = CombatResult::WIN;
+               combate = WIN;
           end
          
       else
           apply_bad_consequence(m)
           
-          combate = CombatResult::LOSE;
+          combate = LOSE;
       end
       
       combate
