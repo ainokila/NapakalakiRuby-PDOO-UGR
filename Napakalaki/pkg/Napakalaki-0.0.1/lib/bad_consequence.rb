@@ -39,7 +39,7 @@ class Bad_consequence
     
   end
   
-  def to_s
+  def to_s()
     "Mal rollo: #{@text} 
     \n Pierdes: #{@levels} niveles 
     \n y pierdes #{@nVisibleTreasures} tesoros visibles 

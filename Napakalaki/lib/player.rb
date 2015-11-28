@@ -356,6 +356,8 @@ end
           @hidden_treasures << treasure
           
       end
+      puts 'tamanio de los vectores en init_tr'
+      puts @hidden_treasures.size
  
   end
   
@@ -385,6 +387,10 @@ end
       
       combate
   end
+  
+  def canISteal
+    @can_i_steal
+  end
  
   def make_treasure_visible(t)
       
@@ -397,10 +403,14 @@ end
   end
   
   def getVisibleTreasures
+    puts 'tamanio de los vectores'
+    puts @visible_treasures.size
     @visible_treasures
   end
   
   def getHiddenTreasures
+    puts 'tamanio de los vectores'
+    puts @visible_treasures.size
    @hidden_treasures
   end
   
