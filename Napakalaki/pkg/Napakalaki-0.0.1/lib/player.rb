@@ -274,7 +274,7 @@ end
         treasure = enemy.give_me_a_treasure
         @hidden_treasures << treasure
        #duda#
-       self.have_stolen
+       have_stolen
         
       end
     end
@@ -287,7 +287,7 @@ end
     
     pos_aleatorio = Random.rand(1...maximo)
     
-    solucion = @hidden_treasures.index(pos_aleatorio)
+    solucion = @hidden_treasures.at(pos_aleatorio)
     
    solucion   
   end
@@ -326,11 +326,11 @@ end
   def discard_all_treasures
     
      @visible_treasures.each do |treasure|
-          self.discard_visible_treasure(t)
+          discard_visible_treasure(t)
      end
       
       @hidden_treasures.each do |treasure|
-          self.discard_hidden_treasure(t)
+          discard_hidden_treasure(t)
      end
   end
   
@@ -349,11 +349,13 @@ end
       if number > 1
           treasure = dealer.next_treasure
           @hidden_treasures << treasure
+          puts treasure
       end
       
       if number == 6
           treasure = dealer.next_treasure();
           @hidden_treasures << treasure
+          puts treasure
           
       end
       puts 'tamanio de los vectores en init_tr'
@@ -398,19 +400,19 @@ end
       
       if can_i
           @visible_treasures << t
-          hidden_treasures.delete(t);
+          @hidden_treasures.delete(t);
       end
   end
   
   def getVisibleTreasures
-    puts 'tamanio de los vectores'
+    puts 'tamanio de los vectores visible'
     puts @visible_treasures.size
     @visible_treasures
   end
   
-  def getHiddenTreasures
-    puts 'tamanio de los vectores'
-    puts @visible_treasures.size
+  def getHiddeTreasures
+    puts 'tamanio de los vectores oculto'
+    puts @hidden_treasures.size
    @hidden_treasures
   end
   

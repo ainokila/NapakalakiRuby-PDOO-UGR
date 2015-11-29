@@ -167,7 +167,7 @@ class Napakalaki
        end
        
    end
-     state_ok;
+     state_ok
   end
 
   def end_of_game(result)
