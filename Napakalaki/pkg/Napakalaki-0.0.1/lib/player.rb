@@ -134,7 +134,7 @@ class Player
      
      solucion=true
      
-     if !@pending_bad_consequence.is_empty and @hidden_treasures.length > 4
+     if !(@pending_bad_consequence.is_empty and @hidden_treasures.length > 4)
          
          solucion = false
      end
@@ -410,7 +410,7 @@ end
     @visible_treasures
   end
   
-  def getHiddeTreasures
+  def getHiddenTreasures
     puts 'tamanio de los vectores oculto'
     puts @hidden_treasures.size
    @hidden_treasures

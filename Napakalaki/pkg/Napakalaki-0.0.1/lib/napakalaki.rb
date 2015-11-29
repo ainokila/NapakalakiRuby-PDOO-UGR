@@ -101,7 +101,7 @@ class Napakalaki
   private :set_enemies
   
   def developCombat
-      m = @current_monster;
+      m = @current_monster
       combat_result = @current_player.combat(m)
     
     @dealer.give_monster_back(m)
@@ -146,15 +146,15 @@ class Napakalaki
     init_players(player);
     set_enemies
     @dealer.init_cards
-    next_turn 
+    nextTurn 
     
   end
 
-  def next_turn
+  def nextTurn
      
     state_ok = false
     state_ok = next_turn_allowed 
-
+   
    if state_ok == true
        @current_monster = dealer.next_monster
        @current_player = next_player
