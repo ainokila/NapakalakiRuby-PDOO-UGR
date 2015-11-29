@@ -102,12 +102,11 @@ class Napakalaki
   
   def developCombat
       m = @current_monster;
-      combat_result = @current_player.combat(m);
+      combat_result = @current_player.combat(m)
     
-    @dealer.give_monster_back(m);
+    @dealer.give_monster_back(m)
       
-    return combat_result;  
-    
+    combat_result    
   end
 
   def discard_visible_treasures(treasures)

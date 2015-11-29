@@ -264,8 +264,7 @@ end
   private :apply_bad_consequence
   
   def steal_treasure
-    can_i = self.can_i_steal
-    treasure = nil
+    can_i = can_i_steal
     
     if(can_i)
       can_you = @enemy.can_you_give_me_a_treasure
@@ -288,6 +287,7 @@ end
     pos_aleatorio = Random.rand(1...maximo)
     
     solucion = @hidden_treasures.at(pos_aleatorio)
+    @hidden_treasures.delete(solucion)#queda por probar
     
    solucion   
   end
