@@ -13,7 +13,7 @@ class Treasure
   end
   
   def get_type()
-    
+    @type
   end
   
   def to_s()

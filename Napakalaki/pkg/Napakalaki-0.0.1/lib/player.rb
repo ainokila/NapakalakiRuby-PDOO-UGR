@@ -182,7 +182,7 @@ class Player
     
     solucion = false
       
-      if @hidden_treasures.lenght > 0  or @visible_treasures.lenght > 0 then 
+      if @hidden_treasures.length > 0  or @visible_treasures.length > 0 then 
          
           solucion = true
           
@@ -196,40 +196,56 @@ class Player
  
     def can_make_treasure_visible(t)
    
-       solucion=true
-       
-         @visible_treasures.each do |iterador|
+       result = false
+
+      case t.get_type()
+
+      when TreasureKind::ONEHAND 
+
+        if is_treasure_kind_in_use(TreasureKind::BOTHHANDS) then
+          result = false
+        else
           
-            contador_one_hand = 0
-          
-            if iterador.get_type == :onehand
-          
-                contador_one_hand = contador_one_hand + 1
-             
+          i = 0
+          @visible_treasures.each do |tv|
+            if tv.get_type() == TreasureKind::ONEHAND then
+              i += 1
             end
-            
-            if !(contador_one_hand <2) or t.get_type == :onehand
-              
-                if iterador.get_type == t.get_type
-                      solucion= false
-                      
-                end
-                
-                if iterador.get_type == :bothhands and t.get_type  == :onehand  
-                       solucion = false
-                end
-                
-                if iterador.get_type == :onehand and t.get_type == :bothhands
-                       solucion = false
-                end
-                
-            end
-             
-         end
-   solucion
-end
- 
- private :can_make_treasure_visible
+                        
+          end
+
+          if i == 2 then
+            result = false
+          else
+            result = true
+          end
+        end
+
+      else 
+        result = !is_treasure_kind_in_use(t.get_type())
+
+      end
+
+      result
+    end
+    
+    private :can_make_treasure_visible
+    
+    def is_treasure_kind_in_use(type) 
+
+      result = false
+      @visible_treasures.each do |tesoro|
+        if type == tesoro.get_type() then
+
+          result = true
+          break
+
+        end
+
+      end
+      result
+    end
+    private :is_treasure_kind_in_use
  
     
   def apply_prize(m)
@@ -282,17 +298,15 @@ end
   
   def  give_me_a_treasure
     
-    maximo = @hidden_treasures.length
+    maximo = @hidden_treasures.length - 1
     
-    pos_aleatorio = Random.rand(1...maximo)
+    pos_aleatorio = Random.rand(0..maximo)
     
     solucion = @hidden_treasures.at(pos_aleatorio)
     @hidden_treasures.delete(solucion)#queda por probar
     
    solucion   
   end
-
- private :give_me_a_treasure
   
   def discardVisibleTreasure(t)
       
@@ -357,10 +371,7 @@ end
           
       end
       
-      puts @hidden_treasures
-      puts 'tamanio de los vectores en init_tr'
-      puts @hidden_treasures.size
-      puts @name
+   
  
   end
   
@@ -406,15 +417,10 @@ end
   end
   
   def getVisibleTreasures
-    puts 'tamanio de los vectores visible'
-    puts @name
-    puts @visible_treasures.size
     @visible_treasures
   end
   
   def getHiddenTreasures
-    puts 'tamanio de los vectores oculto'
-    puts @hidden_treasures.size
    @hidden_treasures
   end
   

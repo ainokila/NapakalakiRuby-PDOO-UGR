@@ -84,16 +84,15 @@ class Napakalaki
   def set_enemies
     
     pos_aleatorio = 0
-    tamanio = @players.length
+    tamanio = @players.length - 1
       
      @players.each do |iterador|
 
        pos_aleatorio =  Random.rand(1..tamanio)
 
        while (@players.at(pos_aleatorio) == iterador)
-           pos_aleatorio =  Random.rand(1..tamanio)
+           pos_aleatorio =  Random.rand(0..tamanio)
        end
-       
        iterador.set_enemy_player(@players.at(pos_aleatorio))
      end
      
@@ -158,7 +157,6 @@ class Napakalaki
     state_ok = next_turn_allowed 
    
    if state_ok == true
-      puts 'Entra state_oki'
        @current_monster = dealer.next_monster
        @current_player = next_player
        
