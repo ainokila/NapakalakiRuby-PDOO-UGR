@@ -134,7 +134,7 @@ class Player
      
      solucion=true
      
-     if !(@pending_bad_consequence.is_empty and @hidden_treasures.length > 4)
+     if ((!@pending_bad_consequence.is_empty) and @hidden_treasures.length > 4)
          
          solucion = false
      end
@@ -349,15 +349,14 @@ end
       if number > 1
           treasure = dealer.next_treasure
           @hidden_treasures << treasure
-          puts treasure
       end
       
       if number == 6
           treasure = dealer.next_treasure();
           @hidden_treasures << treasure
-          puts treasure
           
       end
+      puts @hidden_treasures
       puts 'tamanio de los vectores en init_tr'
       puts @hidden_treasures.size
  
