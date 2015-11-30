@@ -281,7 +281,7 @@ class CardDealer
   end
   
   def give_treasure_back(treasure)
-    @used_treasure << treasure
+    @used_treasures << treasure
   end
   
   def give_monster_back(monster)

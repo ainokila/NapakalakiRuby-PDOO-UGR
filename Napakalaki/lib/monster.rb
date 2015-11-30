@@ -26,11 +26,11 @@ class Monster
   end
   
   def get_levels_gained
-    price.level
+    @price.level
   end
    
   def get_treasures_gained
-    price.treasures
+    @price.treasures
   end
   
   def to_s()

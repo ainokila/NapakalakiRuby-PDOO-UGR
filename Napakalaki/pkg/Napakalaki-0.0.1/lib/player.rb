@@ -82,8 +82,8 @@ class Player
    
    def increment_levels(i)
      
-     if( @level + i >= CONST_MAXLEVEL )
-        @level = CONST_MAXLEVEL
+     if( @level + i >= @@CONST_MAXLEVEL )
+        @level = @@CONST_MAXLEVEL
      
      else
       
@@ -134,7 +134,7 @@ class Player
      
      solucion=true
      
-     if ((!@pending_bad_consequence.is_empty) and @hidden_treasures.length > 4)
+     if ((!@pending_bad_consequence.is_empty) or @hidden_treasures.length > 4)
          
          solucion = false
      end
@@ -192,7 +192,7 @@ class Player
   
   end
   
-  private :can_you_give_me_a_treasure
+  #private :can_you_give_me_a_treasure
  
     def can_make_treasure_visible(t)
    
@@ -234,12 +234,12 @@ end
     
   def apply_prize(m)
  
-    self.increment_levels(m.get_levels_gained)
+    increment_levels(m.get_levels_gained)
     tesoros = m.get_treasures_gained
     
-    baraja = card_dealer.get_instance
+    baraja = CardDealer.get_instance
         
-        tesoros.each do |i|
+        for i in 0..tesoros-1
           @hidden_treasures << baraja.next_treasure
           
         end
@@ -263,8 +263,8 @@ end
 
   private :apply_bad_consequence
   
-  def steal_treasure
-    can_i = can_i_steal
+  def stealTreasure
+    can_i = canISteal
     
     if(can_i)
       can_you = @enemy.can_you_give_me_a_treasure
@@ -294,7 +294,7 @@ end
 
  private :give_me_a_treasure
   
-  def discard_visible_treasure(t)
+  def discardVisibleTreasure(t)
       
       @visible_treasures.delete(t)
       
@@ -309,7 +309,7 @@ end
       
   
   
-  def discard_hidden_treasure(t)
+  def discardHiddenTreasure(t)
       
      @hidden_treasures.delete(t)
       
@@ -326,11 +326,11 @@ end
   def discardAllTreasures
     
      @visible_treasures.each do |treasure|
-          discard_visible_treasure(t)
+          discardVisibleTreasure(treasure)
      end
       
       @hidden_treasures.each do |treasure|
-          discard_hidden_treasure(t)
+          discardHiddenTreasure(treasure)
      end
   end
   
@@ -356,9 +356,11 @@ end
           @hidden_treasures << treasure
           
       end
+      
       puts @hidden_treasures
       puts 'tamanio de los vectores en init_tr'
       puts @hidden_treasures.size
+      puts @name
  
   end
   
@@ -373,7 +375,7 @@ end
               
         apply_prize(m)
           
-          if @level >= @@MAXLEVEL
+          if @level >= @@CONST_MAXLEVEL
             combate = NapakalakiGame::CombatResult::WINGAME
           
           else
@@ -393,7 +395,7 @@ end
     @can_i_steal
   end
  
-  def make_treasure_visible(t)
+  def makeTreasureVisible(t)
       
       can_i = can_make_treasure_visible(t)
       
@@ -405,6 +407,7 @@ end
   
   def getVisibleTreasures
     puts 'tamanio de los vectores visible'
+    puts @name
     puts @visible_treasures.size
     @visible_treasures
   end

@@ -27,7 +27,7 @@ class Napakalaki
        jugador = Player.new(iterador)
        @players << jugador
       end
-      @current_player = next_player
+      
   end
   private :init_players
  
@@ -56,14 +56,14 @@ class Napakalaki
         posicion = posicion +1
         
         if posicion >= @players.length
-                aux = @players.at(0);
+                @currentPlayer = @players.at(0);
         else
-                aux = @players.at(posicion);
+                @currentPlayer = @players.at(posicion);
         
                 
        end
       end
-    aux
+    @currentPlayer
   end
   private :next_player
 
@@ -72,7 +72,7 @@ class Napakalaki
     solucion = false
           
     if @current_player.nil?
-              solucion = false
+              solucion = true
     else
         solucion = @current_player.valid_state
     end
@@ -111,10 +111,10 @@ class Napakalaki
     combat_result    
   end
 
-  def discard_visible_treasures(treasures)
+  def discardVisibleTreasure(treasures)
     
       treasures.each do |treasure|
-          @current_player.discard_visible_treasure(treasure)
+          @current_player.discardVisibleTreasure(treasure)
           @dealer.give_treasure_back(treasure)
       
     
@@ -123,11 +123,11 @@ class Napakalaki
   end
   
   
-  def discard_hidden_treasures(treasures)
+  def discardHiddenTreasure(treasures)
       
       treasures.each do |treasure|
           
-          @current_player.discard_hidden_treasure(treasure)
+          @current_player.discardHiddenTreasure(treasure)
           @dealer.give_treasure_back(treasure)
       
     
@@ -135,10 +135,10 @@ class Napakalaki
     end
   end
   
-  def make_treasures_visible(treasures)
+  def makeTreasureVisible(treasures)
      
     treasures.each do |t|
-          @currentPlayer.make_treasure_visible(t)
+          @currentPlayer.makeTreasureVisible(t)
     end
     
   end
@@ -158,7 +158,7 @@ class Napakalaki
     state_ok = next_turn_allowed 
    
    if state_ok == true
-      
+      puts 'Entra state_oki'
        @current_monster = dealer.next_monster
        @current_player = next_player
        
