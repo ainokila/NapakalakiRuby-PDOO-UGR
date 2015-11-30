@@ -323,7 +323,7 @@ end
   end
       
   
-  def discard_all_treasures
+  def discardAllTreasures
     
      @visible_treasures.each do |treasure|
           discard_visible_treasure(t)

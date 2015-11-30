@@ -92,8 +92,8 @@ class Napakalaki
 
        while (@players.at(pos_aleatorio) == iterador)
            pos_aleatorio =  Random.rand(1..tamanio)
-           puts pos_aleatorio
        end
+       
        iterador.set_enemy_player(@players.at(pos_aleatorio))
      end
      
