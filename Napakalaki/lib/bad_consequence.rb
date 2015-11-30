@@ -71,9 +71,7 @@ class Bad_consequence
   end
   
   def adjust_to_fit_treasure_list(v, h)
-          
-    #BadConsequence solucion;
-        
+            
         if specificHiddenTreasures.isEmpty? and specificVisibleTreasures.isEmpty?
            
                    visibles = 0
@@ -101,7 +99,7 @@ class Bad_consequence
                      
                     end
                      
-          bad_cons = new_level_number_of_treasures(@text, 0, visible, hidden)                       
+          bad_cons = new_level_number_of_treasures(@text, @levels, visibles, ocultos)                       
         else
         visible = Array.new
         hidden = Array.new
@@ -121,7 +119,7 @@ class Bad_consequence
             end
         end  
         
-        bad_cons = Bad_consequence.new_level_specific_treasures(@text, 0, visible, hidden)     
+        bad_cons = Bad_consequence.new_level_specific_treasures(@text, @levels, visible, hidden)     
     
     end
     bad_cons
