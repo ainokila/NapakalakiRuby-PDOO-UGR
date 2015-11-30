@@ -99,7 +99,7 @@ class Bad_consequence
                      
                     end
                      
-          bad_cons = Bad_consequence.new_level_number_of_treasures(@text, @levels, visibles, ocultos)                       
+          bad_cons = Bad_consequence.new_level_number_of_treasures('', @levels, visibles, ocultos)                       
         else
         visible = Array.new
         hidden = Array.new
@@ -119,7 +119,7 @@ class Bad_consequence
             end
         end  
         
-        bad_cons = Bad_consequence.new_level_specific_treasures(@text, @levels, visible, hidden)     
+        bad_cons = Bad_consequence.new_level_specific_treasures('', @levels, visible, hidden)     
     
     end
     bad_cons
