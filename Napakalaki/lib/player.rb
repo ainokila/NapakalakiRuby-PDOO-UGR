@@ -44,13 +44,7 @@ class Player
   def get_level_treasures
 
     solucion  = 0
-    
-    hidden_treasures.each do |hidd|
-      
-      solucion = solucion + hidd.bonus
-      
-    end
-    
+        
     visible_treasures.each do |vis|
       
       solucion = solucion + vis.bonus
