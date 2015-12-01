@@ -53,13 +53,12 @@ class Napakalaki
               posicion = contador          
           end
         end
-        posicion = posicion +1
-        
+     
         if posicion >= @players.length
-                @currentPlayer = @players.at(0);
+                @currentPlayer = @players.at(0)
         else
-                @currentPlayer = @players.at(posicion);
-        
+                @currentPlayer = @players.at(posicion)
+       
                 
        end
       end
