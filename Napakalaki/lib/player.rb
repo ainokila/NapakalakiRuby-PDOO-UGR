@@ -115,7 +115,8 @@ class Player
   def die_if_no_treasures
          
      if @hidden_treasures.length	 == 0 and @visible_treasures.length == 0
-        
+        puts @player
+        puts 'Muere no tesoros'
          @dead = true
      end
      
@@ -332,10 +333,10 @@ class Player
       if @pending_bad_consequence != nil  and !@pending_bad_consequence.is_empty
            
           @pending_bad_consequence.substract_visible_treasure(t)
-      
+      end
       die_if_no_treasures 
       
-    end
+    
   end
       
   
@@ -347,22 +348,18 @@ class Player
       if @pending_bad_consequence != nil  and !@pending_bad_consequence.is_empty
            
           @pending_bad_consequence.substract_hidden_treasure(t)
-      
+      end
       die_if_no_treasures 
       
-    end
+    
   end
       
   
   def discardAllTreasures
-    
-     @visible_treasures.each do |treasure|
-          discardVisibleTreasure(treasure)
-     end
-      
-      @hidden_treasures.each do |treasure|
-          discardHiddenTreasure(treasure)
-     end
+    @visible_treasures.clear
+    @hidden_treasures.clear
+    @pending_bad_consequence = Bad_consequence.new_level_number_of_treasures('',0,0,0)
+    die_if_no_treasures 
   end
   
       
@@ -444,7 +441,7 @@ class Player
   def to_s
     "#{@name} 
       \n Nivel: #{@level} 
-      \n Mal Rollo pendiente: #{@pending_bad_consequence}" 
+      " 
   end
 
 end

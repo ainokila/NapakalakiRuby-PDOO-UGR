@@ -65,7 +65,7 @@ class CardDealer
     @unused_monster = Array.new
     @used_monster = Array.new
     #Crear los treasures
-        #Monstruo 1
+     #Monstruo 1
 
     prize1 = Prize.new(2,1)
 
@@ -219,7 +219,11 @@ class CardDealer
     bad_consequence19 = Bad_consequence.new_level_specific_treasures('Te faltan manos para tanta cabeza. Pierdes todos tus tesoros visibles de las manos.', 0,
                             [TreasureKind::BOTHHANDS,TreasureKind::ONEHAND,TreasureKind::ONEHAND],[])
 
-    @unused_monster << Monster.new('Bicefalo',20, bad_consequence19 , prize19) 
+    @unused_monster << Monster.new('Bicefalo',20, bad_consequence19 , prize19)
+    
+    
+    
+    
     #puts monsters
     
   end
