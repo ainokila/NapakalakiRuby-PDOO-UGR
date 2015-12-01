@@ -197,7 +197,7 @@ class Player
 
       when TreasureKind::ONEHAND 
 
-        if treasure_kind_in_use(TreasureKind::BOTHHANDS) then
+        if is_treasure_kind_in_use(TreasureKind::BOTHHANDS) then
           result = false
         else
           
