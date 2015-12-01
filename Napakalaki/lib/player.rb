@@ -335,6 +335,7 @@ class Player
           @pending_bad_consequence.substract_visible_treasure(t)
       end
       die_if_no_treasures 
+      CardDealer.get_instance.give_treasure_back(t)
       
     
   end
@@ -350,6 +351,7 @@ class Player
           @pending_bad_consequence.substract_hidden_treasure(t)
       end
       die_if_no_treasures 
+      CardDealer.get_instance.give_treasure_back(t)
       
     
   end
