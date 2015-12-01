@@ -40,7 +40,7 @@ class Napakalaki
      
       if @currentPlayer.nil?
           numeroJugadores = @players.length - 1
-          posicion =  Random.rand(1..numeroJugadores)
+          posicion =  Random.rand(0..numeroJugadores)
           aux = @players.at(posicion)
           @currentPlayer=aux
                    
@@ -88,7 +88,7 @@ class Napakalaki
       
      @players.each do |iterador|
 
-       pos_aleatorio =  Random.rand(1..tamanio)
+       pos_aleatorio =  Random.rand(0..tamanio)
 
        while (@players.at(pos_aleatorio) == iterador)
            pos_aleatorio =  Random.rand(0..tamanio)
