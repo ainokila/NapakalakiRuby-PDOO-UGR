@@ -358,6 +358,8 @@ class Player
       
   
   def discardAllTreasures
+    #Si recorremos con un for y usamos el metodo discard , siempre queda 1 sin eliminar
+    
     @visible_treasures.clear
     @hidden_treasures.clear
     @pending_bad_consequence = Bad_consequence.new_level_number_of_treasures('',0,0,0)
