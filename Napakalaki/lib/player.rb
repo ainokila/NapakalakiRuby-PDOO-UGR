@@ -287,8 +287,8 @@ class Player
           #Y por último descarto todos los tesoros
           discardAllTreasures
           
-           puts '\n\nAl morir el jugador, este pierde todos los tesoros de los que dispone
-                                (tanto equipados como ocultos) y su nivel queda fijado en 1.\n\n)'
+           puts 'Al morir el jugador, este pierde todos los tesoros de los que dispone
+                                (tanto equipados como ocultos) y su nivel queda fijado en 1.'
        end
       
       end
