@@ -417,7 +417,7 @@ class Player
       combate = NapakalakiGame::CombatResult::LOSE
       end
       
-      combate =  NapakalakiGame::CombatResult::LOSE
+      combate
   end
   
   def canISteal
