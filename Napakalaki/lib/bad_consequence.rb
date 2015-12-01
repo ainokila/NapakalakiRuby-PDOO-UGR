@@ -49,6 +49,17 @@ class Bad_consequence
     \n Tipo de Tesoro Oculto: #{@specificHiddenTreasures}."
   end
   
+  def is_dead
+    
+    @death
+  
+  end
+  
+  def setLevels(l)
+    
+    @levels = l
+    
+  end
   
   def is_empty
      
@@ -106,7 +117,7 @@ class Bad_consequence
         
         v.each do |t|
             
-            if visible.index(t.type) == nil 
+            if @specificVisibleTreasures.include?(t.type) == true
                 visible << t.type
             end
         end
@@ -114,7 +125,7 @@ class Bad_consequence
         
         h.each do |t|
             
-            if hidden.index(t.type) == nil 
+            if @specificHiddenTreasures.include?(t.type) == true
                 hidden << t.type
             end
         end  
@@ -123,6 +134,7 @@ class Bad_consequence
     
     end
     bad_cons
+    
   end
     
     def get_levels

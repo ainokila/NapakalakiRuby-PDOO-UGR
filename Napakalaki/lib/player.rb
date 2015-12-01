@@ -136,12 +136,12 @@ class Player
      solucion
   end   
  
-  def how_many_visible_treasures(tKind)
+  def how_many_visible_treasures(t_kind)
       
       solucion = 0
       
       
-    visible_treasures.each do |vis|
+    @visible_treasures.each do |vis|
       
       if vis.type == t_kind then
         
@@ -196,7 +196,7 @@ class Player
 
       when TreasureKind::ONEHAND 
 
-        if is_treasure_kind_in_use(TreasureKind::BOTHHANDS) then
+        if treasure_kind_in_use(TreasureKind::BOTHHANDS) then
           result = false
         else
           
@@ -260,14 +260,37 @@ class Player
     def apply_bad_consequence(m)
       
       bad = m.get_bad_consequence
-      niveles = bad.get_levels
-      decrement_levels(niveles)
+          
+      if bad.is_dead == false
       
-      pending_bad = @pending_bad_consequence
+                pending_bad = bad.adjust_to_fit_treasure_list(@visible_treasures,@hidden_treasures)
+
+                niveles = pending_bad.get_levels
+
+                decrement_levels(niveles)
+                
+            #Como ya se han perdido los niveles, ahora los vuelvo a poner a 0
+                pending_bad.setLevels(0)
+                
+                @pending_bad_consequence = pending_bad
+                
+      else if  bad.is_dead == true
+          
+            
+          #Al morir el jugador, este pierde todos los tesoros de los que dispone (tanto equipados como ocultos)
+          #y su nivel quedará fijado en 1.
+         
+          #Decremento el máximo de niveles para asegurar que el nivel del player se pone a 1.
+          decrement_levels(@@CONST_MAXLEVEL)
+          
+          #Y por último descarto todos los tesoros
+          discardAllTreasures
+          
+           puts '\n\nAl morir el jugador, este pierde todos los tesoros de los que dispone
+                                (tanto equipados como ocultos) y su nivel queda fijado en 1.\n\n)'
+       end
       
-      pending_bad.adjust_to_fit_treasure_list(@visible_treasures,@hidden_treasures)
-      
-      @pending_bad_consequence = pending_bad
+      end
       
     end
 
@@ -393,7 +416,7 @@ class Player
       combate = NapakalakiGame::CombatResult::LOSE
       end
       
-      combate
+      combate =  NapakalakiGame::CombatResult::LOSE
   end
   
   def canISteal
@@ -419,7 +442,9 @@ class Player
   end
   
   def to_s
-    "#{@name} Nivel: #{@level}" 
+    "#{@name} 
+      \n Nivel: #{@level} 
+      \n Mal Rollo pendiente: #{@pending_bad_consequence}" 
   end
 
 end
