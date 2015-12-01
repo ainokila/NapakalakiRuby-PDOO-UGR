@@ -445,6 +445,7 @@ class Player
   def to_s
     "#{@name} 
       \n Nivel: #{@level} 
+       Mal Rollo Pendiente : #{@pending_bad_consequence}
       " 
   end
 
