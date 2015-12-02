@@ -115,8 +115,7 @@ class Player
   def die_if_no_treasures
          
      if @hidden_treasures.length	 == 0 and @visible_treasures.length == 0
-        puts @player
-        puts 'Muere no tesoros'
+       
          @dead = true
      end
      
@@ -177,7 +176,7 @@ class Player
     
     solucion = false
       
-      if @hidden_treasures.length > 0  or @visible_treasures.length > 0 then 
+      if @hidden_treasures.length > 0  then 
          
           solucion = true
           
@@ -360,11 +359,18 @@ class Player
       
   
   def discardAllTreasures
-    #Si recorremos con un for y usamos el metodo discard , siempre queda 1 sin eliminar
     
-    @visible_treasures.clear
-    @hidden_treasures.clear
-    @pending_bad_consequence = Bad_consequence.new_level_number_of_treasures('',0,0,0)
+    visible = @visible_treasures.clone
+    oculto = @hidden_treasures.clone
+    for i in visible 
+      discardVisibleTreasure(i)
+    end
+    for j in oculto
+      discardHiddenTreasure(j)
+    end
+    
+    
+    
     die_if_no_treasures 
   end
   
@@ -414,7 +420,7 @@ class Player
           end
          
       else
-          apply_bad_consequence(m)
+          apply_bad_consequence(m)      
           
       combate = NapakalakiGame::CombatResult::LOSE
       end
