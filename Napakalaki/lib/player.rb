@@ -306,6 +306,8 @@ class Player
       if(can_you)
         treasure = enemy.give_me_a_treasure
         @hidden_treasures << treasure
+        @enemy.hidden_treasures.delete(treasure)
+        @enemy.die_if_no_treasures
        #duda#
        have_stolen
         
