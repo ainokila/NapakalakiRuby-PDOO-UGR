@@ -7,7 +7,7 @@ require_relative 'prize.rb'
 require_relative 'bad_consequence.rb'
 
 class Monster
-  attr_accessor :name, :combat_level , :bad_consequence , :price 
+  attr_accessor :name, :combat_level , :bad_consequence , :price , :level_change_against_cultist_player
   
    def initialize(name, combat_level, bad_consequence, price)
     
@@ -16,7 +16,9 @@ class Monster
     @bad_consequence = bad_consequence
     @price = price
     
-  end
+    
+   end
+  
   
   def get_bad_consequence
     @bad_consequence
@@ -31,6 +33,12 @@ class Monster
    
   def get_treasures_gained
     @price.treasures
+  end
+  
+  def get_combat_level_against_cultist_player
+       
+        valor = get_combatlevel + @level_change_against_cultist_player
+        valor
   end
   
   def to_s()

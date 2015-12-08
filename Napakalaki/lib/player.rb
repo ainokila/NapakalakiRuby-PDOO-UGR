@@ -27,12 +27,47 @@ class Player
       
    end
    
-    def is_death
+   #Constructor por copia
+   
+   def self.copia(p)
+    
+     @name = p.name
+     @level = p.level
+     @dead= p.dead
+     @can_i_steal = p.can_i_steal
+     @hidden_treasures = p.hidden_treasures.clone
+     @visible_treasures = p.visible_treasures.clone
+     @enemy = p.enemy
+     @pending_bad_consequence = p.pending_bad_consequence
+     
+   end
+   
+   def is_death
       @dead    
     end
  
- 
+   
+   def should_convert
+     
+      dado = Dice.get_instance.next_number
+      sol = false
+     if dado == 1
+         sol = true              
+     end
+      sol
+   end
   
+   protected :should_convert
+ 
+     
+   
+   def  get_oponent_level(m)
+      m.get_combatlevel
+ 
+   end
+  
+     protected :get_oponent_level
+     
   def bring_to_life
     
      @dead = false;
@@ -71,7 +106,7 @@ class Player
    
    end
  
-   private :get_combat_level   
+   protected :get_combat_level   
    
    
    def increment_levels(i)
