@@ -26,10 +26,14 @@ class CultistPlayer < Player
                
     end 
     
+    protected :get_combat_level
+    
     def get_oponent_level(m)
        m.get_combat_level_against_cultist_player
     
     end
+   
+    protected :get_oponent_level
     
     def should_convert
       
@@ -38,14 +42,17 @@ class CultistPlayer < Player
       sol
     end
     
+    protected :should_convert
     
      def giveMeATreasure
    
-       posAleatorio = Random.rand(1...super.visible_treasures.length)
-       solucion = super.visible_treasures.at(posAleatorio)
+       pos_aleatorio = Random.rand(0..(super.visible_treasures.length-1))
+       solucion = super.visible_treasures.at(pos_aleatorio)
     
        solucion
      end
+     
+     private :giveMeATreasure
     
     def canYouGiveMeATreasure
      
@@ -58,6 +65,8 @@ class CultistPlayer < Player
       solucion
       end
     end
+    
+    private :canYouGiveMeATreasure
     
     def  getTotalCultistPlayers
       
