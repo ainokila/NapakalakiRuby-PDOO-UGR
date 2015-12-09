@@ -24,7 +24,7 @@ class Napakalaki
     
      @players = Array.new
      names.each do |iterador|
-       jugador = Player.new(iterador)
+       jugador = Player.new(iterador, true, 1, Array.new, Array.new, true, Bad_consequence.new_level_number_of_treasures('',0,0,0))
        @players << jugador
       end
       

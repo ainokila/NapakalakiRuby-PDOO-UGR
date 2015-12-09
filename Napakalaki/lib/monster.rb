@@ -9,16 +9,22 @@ require_relative 'bad_consequence.rb'
 class Monster
   attr_accessor :name, :combat_level , :bad_consequence , :price , :level_change_against_cultist_player
   
-   def initialize(name, combat_level, bad_consequence, price)
+   def initialize(name, combat_level, bad_consequence, price, ic)
     
     @name = name
     @combat_level= combat_level
     @bad_consequence = bad_consequence
     @price = price
-    
+    @level_change_against_cultist_player = ic
     
    end
-  
+ 
+   
+   def self.copia(name, combat_level, bad_consequence, price,ic)
+       
+      self.new(name, combat_level, bad_consequence, price, ic)
+      
+   end
   
   def get_bad_consequence
     @bad_consequence

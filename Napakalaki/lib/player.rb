@@ -14,16 +14,17 @@ class Player
   @@CONST_MAXLEVEL = 10
   
   
-   def initialize(name)
+   def initialize(n,d,l,v_t,h_t,cis,pbc)
      
-      @name = name 
-      @dead = true
+      @name = n
+      @dead = d
       #Inicializamos el nivel a 1
-      @level = 1 
-      @visible_treasures = Array.new
-      @hidden_treasures = Array.new
-      @can_i_steal = true
-      @pending_bad_consequence = Bad_consequence.new_level_number_of_treasures('',0,0,0)
+      @level = l 
+      @visible_treasures = v_t
+      @hidden_treasures = h_t
+      @can_i_steal = cis
+      @pending_bad_consequence = pbc
+        #Bad_consequence.new_level_number_of_treasures('',0,0,0)
       
    end
    
@@ -31,14 +32,7 @@ class Player
    
    def self.copia(p)
     
-     @name = p.name
-     @level = p.level
-     @dead= p.dead
-     @can_i_steal = p.can_i_steal
-     @hidden_treasures = p.hidden_treasures.clone
-     @visible_treasures = p.visible_treasures.clone
-     @enemy = p.enemy
-     @pending_bad_consequence = p.pending_bad_consequence
+     self.new(p.name,p.dead,p.level,p.visible_treasures,p.hidden_treasures,p.can_i_steal,p.pending_bad_consequence)
      
    end
    
