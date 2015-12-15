@@ -46,6 +46,7 @@ class Player
      
       dado = Dice.get_instance.next_number
       sol = false
+
      if dado == 1
          sol = true              
      end
@@ -458,7 +459,7 @@ class Player
           else
             combate = NapakalakiGame::CombatResult::LOSE
           end
-      combate = NapakalakiGame::CombatResult::LOSE
+
       end
       
       combate
