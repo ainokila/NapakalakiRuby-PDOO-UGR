@@ -450,8 +450,14 @@ class Player
           end
          
       else
-          apply_bad_consequence(m)      
-          
+          apply_bad_consequence(m)  
+          die_if_no_treasures
+          if should_convert
+            combate = NapakalakiGame::CombatResult::LOSEANDCONVERT
+            
+          else
+            combate = NapakalakiGame::CombatResult::LOSE
+          end
       combate = NapakalakiGame::CombatResult::LOSE
       end
       
