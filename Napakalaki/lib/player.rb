@@ -9,7 +9,7 @@ require_relative 'combat_result.rb'
 
 
 class Player
-  attr_accessor :name, :level, :dead, :can_i_steal, :hidden_treasures, :visible_treasures, :pending_bad_consequence
+  attr_accessor :name, :level, :dead, :can_i_steal, :hidden_treasures, :visible_treasures, :pending_bad_consequence ,:enemy
   protected :enemy
   
   @@CONST_MAXLEVEL = 10

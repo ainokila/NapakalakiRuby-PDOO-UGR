@@ -5,6 +5,7 @@ require_relative 'prize.rb'
 require_relative 'bad_consequence.rb'
 require_relative 'monster.rb'
 require_relative 'treasure_kind.rb'
+require_relative 'cultist.rb'
 
 require 'singleton'
 class CardDealer
@@ -235,14 +236,14 @@ class CardDealer
        @unusedMonster << Monster.new('Testigos Oculares.' ,6 , bad_consequence21, prize_21, +2)
        
        #Monstruo Con Sectario 3    ******************************************************************
-       bad_consequence22 = BadConsequence.new_death('Hoy no es tu día de suerte. Mueres.' ,true )
+       bad_consequence22 = BadConsequence.new_death('Hoy no es tu dia de suerte. Mueres.' ,true )
        prize_22 = Prize.new(2,5)
        @unusedMonster << Monster.new('El gran cthulhu.',20 , bad_consequence22, prize_22,+4)
        
        #Monstruo Con Sectario 4    ******************************************************************
        bad_consequence23 = BadConsequence.new_level_number_of_treasures('Tu gobierno te recorta dos niveles.' ,2 ,0,0)
        prize_23 = Prize.new(2,1)
-       @unusedMonster << Monster.new('Serpiente político.' ,8 , bad_consequence23, prize_23, -2)
+       @unusedMonster << Monster.new('Serpiente politico.' ,8 , bad_consequence23, prize_23, -2)
        
        #Monstruo Con Sectario 5    ******************************************************************
        bad_consequence24 = BadConsequence.new_level_specific_treasures('Pierdes tu casco y armadura visible. Pierdes tus manos ocultas.' ,0 ,
@@ -269,7 +270,7 @@ class CardDealer
 
 
    def init_cultist_card_deck
-    
+     @unused_cultist = Array.new
     @unused_cultist << Cultist.new('Sectario', 1)
     @unused_cultist << Cultist.new('Sectario', 2)
     @unused_cultist << Cultist.new('Sectario', 1)
