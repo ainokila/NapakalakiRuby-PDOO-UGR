@@ -47,6 +47,8 @@ class GameTester
               #break está implícito            
             when NapakalakiGame::CombatResult::WIN then
               puts "\n\n Ganaste el combate"
+            when NapakalakiGame::CombatResult::LOSEANDCONVERT then
+              puts "\n\n Pierdes y te conviertes en Sectario"
             when NapakalakiGame::CombatResult::LOSE then
               puts "\n\n Has perdido el combate, te toca cumplir el mal rollo"
            end #case
