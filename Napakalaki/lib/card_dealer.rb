@@ -224,42 +224,42 @@ class CardDealer
     
     
     #Monstruo Con Sectario 1   ******************************************************************
-       bad_consequence20 = BadConsequence.new_level_specific_treasures('Pierdes una mano visible' ,0 ,
+       bad_consequence20 = Bad_consequence.new_level_specific_treasures('Pierdes una mano visible' ,0 ,
                [TreasureKind::ONEHAND],[])
        prize_20 = Prize.new(3,1)
        
-      @unusedMonster << Monster.new('El mal indecible impronunciable.' ,10 , bad_consequence20, prize_20, -2)
+      @unused_monster << Monster.new('El mal indecible impronunciable.' ,10 , bad_consequence20, prize_20, -2)
        
        #Monstruo Con Sectario 2   ******************************************************************
-       bad_consequence21 =  BadConsequence.new_level_number_of_treasures('Pierdes tus tesoros visibles. Jajaja',0 ,5,0)
+       bad_consequence21 =  Bad_consequence.new_level_number_of_treasures('Pierdes tus tesoros visibles. Jajaja',0 ,5,0)
        prize_21 = Prize.new(2,1)
-       @unusedMonster << Monster.new('Testigos Oculares.' ,6 , bad_consequence21, prize_21, +2)
+       @unused_monster << Monster.new('Testigos Oculares.' ,6 , bad_consequence21, prize_21, +2)
        
        #Monstruo Con Sectario 3    ******************************************************************
-       bad_consequence22 = BadConsequence.new_death('Hoy no es tu dia de suerte. Mueres.' ,true )
+       bad_consequence22 = Bad_consequence.new_death('Hoy no es tu dia de suerte. Mueres.')
        prize_22 = Prize.new(2,5)
-       @unusedMonster << Monster.new('El gran cthulhu.',20 , bad_consequence22, prize_22,+4)
+       @unused_monster << Monster.new('El gran cthulhu.',20 , bad_consequence22, prize_22,+4)
        
        #Monstruo Con Sectario 4    ******************************************************************
-       bad_consequence23 = BadConsequence.new_level_number_of_treasures('Tu gobierno te recorta dos niveles.' ,2 ,0,0)
+       bad_consequence23 = Bad_consequence.new_level_number_of_treasures('Tu gobierno te recorta dos niveles.' ,2 ,0,0)
        prize_23 = Prize.new(2,1)
-       @unusedMonster << Monster.new('Serpiente politico.' ,8 , bad_consequence23, prize_23, -2)
+       @unused_monster << Monster.new('Serpiente politico.' ,8 , bad_consequence23, prize_23, -2)
        
        #Monstruo Con Sectario 5    ******************************************************************
-       bad_consequence24 = BadConsequence.new_level_specific_treasures('Pierdes tu casco y armadura visible. Pierdes tus manos ocultas.' ,0 ,
+       bad_consequence24 = Bad_consequence.new_level_specific_treasures('Pierdes tu casco y armadura visible. Pierdes tus manos ocultas.' ,0 ,
                [TreasureKind::HELMET,TreasureKind::ARMOR],[TreasureKind::BOTHHANDS,TreasureKind::ONEHAND,TreasureKind::ONEHAND])
        prize_24  = Prize.new(1,1)
-       @unusedMonster << Monster.new('Felpuggoth.' ,2 , bad_consequence24, prize_24, +5)
+       @unused_monster << Monster.new('Felpuggoth.' ,2 , bad_consequence24, prize_24, +5)
        
        #Monstruo Con Sectario 6   ******************************************************************
-       bad_consequence25 = BadConsequence.new_level_number_of_treasures('Pierdes dos niveles.' ,2 ,0,0)
+       bad_consequence25 = Bad_consequence.new_level_number_of_treasures('Pierdes dos niveles.' ,2 ,0,0)
        prize_25 = Prize.new(4,2)
-       @unusedMonster <<  Monster.new('Shoggoth.' ,16 , bad_consequence25, prize_25, -4)
+       @unused_monster <<  Monster.new('Shoggoth.' ,16 , bad_consequence25, prize_25, -4)
        
        #Monstruo Con Sectario 7   ******************************************************************
-       bad_consequence26 = BadConsequence.new_level_number_of_treasures('Pintalabios negro. Pierdes dos niveles.' ,2 ,0,0)
+       bad_consequence26 = Bad_consequence.new_level_number_of_treasures('Pintalabios negro. Pierdes dos niveles.' ,2 ,0,0)
        prize_26 = Prize.new(1,1)
-       @unusedMonster << Monster.new('Lolitaggoth.' ,2 , bad_consequence26, prize_26, +3)
+       @unused_monster << Monster.new('Lolitaggoth.' ,2 , bad_consequence26, prize_26, +3)
     
     #puts monsters
     
