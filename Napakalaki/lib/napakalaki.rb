@@ -3,6 +3,9 @@
 # and open the template in the editor.
 require_relative "card_dealer.rb"
 require_relative "player.rb"
+require_relative "numeric_bad_consequence.rb"
+require_relative "death_bad_consequence.rb"
+require_relative "specific_bad_consequence.rb"
 require 'singleton'
 
 class Napakalaki
@@ -24,7 +27,7 @@ class Napakalaki
     
      @players = Array.new
      names.each do |iterador|
-       jugador = Player.new(iterador, true, 1, Array.new, Array.new, true, Bad_consequence.new_level_number_of_treasures('',0,0,0))
+       jugador = Player.new(iterador, true, 1, Array.new, Array.new, true, NumericBadConsequence.new('',0,0,0))
        @players << jugador
       end
       
