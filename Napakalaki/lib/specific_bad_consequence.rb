@@ -32,7 +32,7 @@ class SpecificBadConsequence < Bad_consequence
     
   def is_empty
        solucion = false
-       if super.text == "" and super.levels == 0 and @specificVisibleTreasures.empty? and @specificHiddenTreasures.empty?
+       if @text == "" and @levels == 0 and @specificVisibleTreasures.empty? and @specificHiddenTreasures.empty?
             solucion = true
          end
         
@@ -41,11 +41,11 @@ class SpecificBadConsequence < Bad_consequence
   end
     
   def setnVisibleTreasures(n)
-      raise NoImplementedError.new
+      raise NotImplementedError.new
   end
     
   def setnHiddenTreasures(n)
-      raise NoImplementedError.new
+      raise NotImplementedError.new
   end
   
   def getnVisibleTreasures

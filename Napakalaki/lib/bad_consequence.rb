@@ -47,38 +47,38 @@ class Bad_consequence
   end
   
   def substract_visible_treasure(t)
-    raise NoImplementedError.new 
+    raise NotImplementedError.new 
   end
   
   def substract_hidden_treasure(t)
-    raise NoImplementedError.new
+    raise NotImplementedError.new
   end
   
   def is_dead
-    raise NoImplementedError.new
+    raise NotImplementedError.new
   end
   
   def setnVisibleTreasures(n)
-      raise NoImplementedError.new
+      raise NotImplementedError.new
   end
     
   def setnHiddenTreasures(n)
-      raise NoImplementedError.new
+      raise NotImplementedError.new
   end
   
   def getnVisibleTreasures
-      raise NoImplementedError.new
+      raise NotImplementedError.new
   end
   
   def getnHiddenTreasures
-      raise NoImplementedError.new
+      raise NotImplementedError.new
   end
   
   
   
   
   def adjust_to_fit_treasure_list(v, h)
-      raise NoImplementedError.new                         
+      raise NotImplementedError.new                         
   end
   
 end

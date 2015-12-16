@@ -25,7 +25,7 @@ class Player
       @hidden_treasures = h_t
       @can_i_steal = cis
       @pending_bad_consequence = pbc
-        #Bad_consequence.new_level_number_of_treasures('',0,0,0)
+        
       
    end
    
@@ -296,7 +296,7 @@ class Player
       
                 pending_bad = bad.adjust_to_fit_treasure_list(@visible_treasures,@hidden_treasures)
 
-                niveles = pending_bad.get_levels
+                niveles = pending_bad.getLevels
 
                 decrement_levels(niveles)
                 
@@ -365,6 +365,12 @@ class Player
       if @pending_bad_consequence != nil  and !@pending_bad_consequence.is_empty
            
           @pending_bad_consequence.substract_visible_treasure(t)
+          
+      if @pending_bad_consequence.getnVisibleTreasures > 0 then
+              n = @pending_bad_consequence.getnVisibleTreasures
+               n=n-1
+              @pending_bad_consequence.setnVisibleTreasures(n)
+          end
       end
       die_if_no_treasures 
       CardDealer.get_instance.give_treasure_back(t)
@@ -381,6 +387,12 @@ class Player
       if @pending_bad_consequence != nil  and !@pending_bad_consequence.is_empty
            
           @pending_bad_consequence.substract_hidden_treasure(t)
+          
+      if @pending_bad_consequence.getnHiddenTreasures > 0 then
+              n = @pending_bad_consequence.getnHiddenTreasures
+               n=n-1
+              @pending_bad_consequence.setnHiddenTreasures(n)
+          end
       end
       die_if_no_treasures 
       CardDealer.get_instance.give_treasure_back(t)
