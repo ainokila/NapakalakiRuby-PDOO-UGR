@@ -83,9 +83,8 @@ class NumericBadConsequence < Bad_consequence
                        ocultos = tam_h
             end
          end
-            
+  
           solucion = NumericBadConsequence.new("",super.getLevels,visibles,ocultos)
-                   
         
     solucion
    end

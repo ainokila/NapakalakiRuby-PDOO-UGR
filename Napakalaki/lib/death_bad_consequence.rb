@@ -12,4 +12,9 @@ class DeathBadConsequence < NumericBadConsequence
     @death = true
   end
   
+  def adjust_to_fit_treasure_list(v, h)
+      bad_cons = DeathBadConsequence.new('')  
+      bad_cons 
+  end
+  
 end

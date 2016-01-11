@@ -293,7 +293,7 @@ class Player
       bad = m.get_bad_consequence
           
       if bad.is_dead == false
-      
+                puts bad.class.to_s 
                 pending_bad = bad.adjust_to_fit_treasure_list(@visible_treasures,@hidden_treasures)
 
                 niveles = pending_bad.getLevels

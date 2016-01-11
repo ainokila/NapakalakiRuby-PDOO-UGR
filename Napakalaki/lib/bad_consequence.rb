@@ -78,7 +78,8 @@ class Bad_consequence
   
   
   def adjust_to_fit_treasure_list(v, h)
-      raise NotImplementedError.new                         
+      raise NotImplementedError.new    
+     
   end
   
 end
