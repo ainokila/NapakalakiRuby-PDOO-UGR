@@ -17,7 +17,7 @@ class CultistPlayer < Player
     
     def get_combat_level
                       
-        sol = super.get_combat_level
+        sol = get_combat_level
         sol = sol * 120
         sol = sol / 100
         sol = sol + @my_cultist_card.get_gained_levels * @total_cultist_players
@@ -46,8 +46,8 @@ class CultistPlayer < Player
     
      def giveMeATreasure
    
-       pos_aleatorio = Random.rand(0..(super.visible_treasures.length-1))
-       solucion = super.visible_treasures.at(pos_aleatorio)
+       pos_aleatorio = Random.rand(0..(@visible_treasures.length-1))
+       solucion = @visible_treasures.at(pos_aleatorio)
     
        solucion
      end
