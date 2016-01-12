@@ -58,7 +58,7 @@ class CultistPlayer < Player
      
       solucion = false
       
-      if super.visible_treasures.length > 0 
+      if @visible_treasures.length > 0 
          
           solucion = true   
        
