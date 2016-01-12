@@ -21,11 +21,11 @@ class NumericBadConsequence < Bad_consequence
       solucion
     end
     
-    def substract_visible_treasure(t)(t)
+    def substract_visible_treasure(t)
       raise NotImplementedError.new
     end
     
-   def substract_hidden_treasure(t)(t)
+   def substract_hidden_treasure(t)
        raise NotImplementedError.new
    end
     
@@ -49,7 +49,7 @@ class NumericBadConsequence < Bad_consequence
         
     def is_empty
        solucion = false
-         if super.text == "" and super.levels == 0 and @nVisibleTreasures == 0 and @nHiddenTreasures == 0 
+         if @text == "" and @levels == 0 and @nVisibleTreasures == 0 and @nHiddenTreasures == 0 
                     solucion = true
          end
         
@@ -84,7 +84,7 @@ class NumericBadConsequence < Bad_consequence
             end
          end
   
-          solucion = NumericBadConsequence.new("",super.getLevels,visibles,ocultos)
+          solucion = NumericBadConsequence.new("",getLevels,visibles,ocultos)
         
     solucion
    end
