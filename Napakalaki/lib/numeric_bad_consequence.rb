@@ -22,11 +22,13 @@ class NumericBadConsequence < Bad_consequence
     end
     
     def substract_visible_treasure(t)
-      raise NotImplementedError.new
+      #raise NotImplementedError.new
+      @nVisibleTreasures = @nVisibleTreasures-1
     end
     
    def substract_hidden_treasure(t)
-       raise NotImplementedError.new
+       #raise NotImplementedError.new
+       @nHiddenTreasures = @nHiddenTreasures -1
    end
     
     def setnVisibleTreasures(n)
