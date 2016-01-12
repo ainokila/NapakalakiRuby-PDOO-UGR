@@ -9,7 +9,7 @@ class CultistPlayer < Player
   
      def initialize(p, c)
        #no se si es asi
-       super.copia(p)
+       copia(p)
        @my_cultist_card = c
     
      end
