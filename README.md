@@ -1,5 +1,5 @@
 # NapakalakiRubyUGR
 
-Juego Napakalaki realizado en Ruby para practicas de PDOO en la UGR
+Napakalaki game in command line , is a version of [munchkin](http://www.worldofmunchkin.com/).
 
 Contacto : www.cristianvelez.es
